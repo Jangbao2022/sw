@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/sw?serverTimezone=UTC&amp;characterEncoding=utf8&amp;useUnicode=true"
+                        userId="root"
+                        password="pawn2589">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.boob.sw.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.boob.sw.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="comments" domainObjectName="Comments"></table>
+        <table tableName="course" domainObjectName="Course"></table>
+        <table tableName="goods" domainObjectName="Goods"></table>
+        <table tableName="organ_mid_super" domainObjectName="OrganMidSuper"></table>
+        <table tableName="organization" domainObjectName="Organization"></table>
+        <table tableName="shop_class" domainObjectName="ShopClass"></table>
+        <table tableName="shopper" domainObjectName="Shopper"></table>
+        <table tableName="superior" domainObjectName="Superior"></table>
+        <table tableName="user" domainObjectName="User"></table>
+        <table tableName="video_class" domainObjectName="VideoClass"></table>
+
+    </context>
+</generatorConfiguration>
