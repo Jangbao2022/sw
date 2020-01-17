@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"></html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png"/>
+    <link href="/images/apple-touch-startup-image-320x460.png" media="(device-width: 320px)"
+          rel="apple-touch-startup-image">
+    <link href="/images/apple-touch-startup-image-640x920.png"
+          media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+    <link rel="stylesheet" href="/css/framework7.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link type="text/css" rel="stylesheet" href="/css/swipebox.css"/>
+    <link type="text/css" rel="stylesheet" href="/css/animations.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>sw -Register</title>
+</head>
+<body>
+<!-- Register Popup -->
+<!--<div class="popup popup-signup">-->
+<div class="content-block">
+    <h4>注册</h4>
+    <div class="loginform">
+        <form id="RegisterForm" method="post" action="/user/register">
+            <input type="text" name="Username" value="" class="form_input required" placeholder="账号"/>
+            <input type="text" name="Email" value="" class="form_input required" placeholder="邮箱"/>
+            <input type="password" name="Password" value="" class="form_input required" placeholder="密码"/>
+            <input type="submit" name="submit" class="form_submit" id="register_submit" value="注册"/>
+        </form>
+        <h5>- 其他应用授权注册 -</h5>
+        <div class="signup_social">
+            <a href="http://www.qq.com/" class="signup_facebook external">qq</a>
+            <a href="http://weixin.qq.com/" class="signup_twitter external">微信</a>
+        </div>
+    </div>
+    <div class="close_popup_button">
+        <a href="#" class="close-popup"><img src="/images/icons/black/menu_close.png" alt="" title=""/></a>
+    </div>
+</div>
+<!--</div>-->

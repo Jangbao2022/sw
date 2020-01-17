@@ -29,3 +29,23 @@ pom.xml导入plugin
 配置端口号
 
 配置数据库信息
+
+###1.5 使用用外置tomcat
+
+配置启动类
+
+```java
+@SpringBootApplication
+public class StreetWorkoutApplication extends SpringBootServletInitializer {
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder springApplicationBuilder) {
+        return springApplicationBuilder.sources(StreetWorkoutApplication.class);
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(StreetWorkoutApplication.class, args);
+    }
+}
+
+```
+
