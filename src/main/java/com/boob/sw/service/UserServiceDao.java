@@ -46,4 +46,11 @@ public interface UserServiceDao {
      */
     boolean forgetPassword(User user);
 
+    /**
+     * 退出登录
+     *
+     * @return
+     */
+    boolean logon(HttpServletRequest request, HttpServletResponse response);
+
 }

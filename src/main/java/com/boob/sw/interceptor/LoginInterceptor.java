@@ -15,14 +15,16 @@ public class LoginInterceptor implements HandlerInterceptor {
 
         //获取session中的user
         User user = (User) request.getSession().getAttribute("user");
-
-        //获取名为account的cookie
-        Cookie[] cookies = request.getCookies();
-        for (Cookie cookie : cookies) {
-            if ("account".equals(cookie.getName())) {
-                String account = cookie.getValue();
-                if (account.equals(user.getAccount()))
-                    return true;
+        if (user != null) {
+            //获取名为account的cookie
+            Cookie[] cookies = request.getCookies();
+            for (Cookie cookie : cookies) {
+                if ("account".equals(cookie.getName())) {
+                    String account = cookie.getValue();
+                    if (account.equals(user.getAccount().toString())) {
+                        return true;
+                    }
+                }
             }
         }
         request.setAttribute("errorMessage", UserEnum.USER_ACCOUNT_NOT_LOGIN.getMessage());

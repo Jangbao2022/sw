@@ -1,5 +1,6 @@
 package com.boob.sw.service.impl;
 
+import com.boob.sw.enums.TimeEnum;
 import com.boob.sw.enums.UserEnum;
 import com.boob.sw.enums.UserTypeEnum;
 import com.boob.sw.exception.UserAccountException;
@@ -51,6 +52,8 @@ public class UserServiceImpl implements UserServiceDao {
 
         //将用户账号加入cookie
         Cookie cookie = new Cookie("account", user.getAccount().toString());
+        cookie.setMaxAge(TimeEnum.ONE_DAY.getTime());
+        cookie.setPath("/");
         response.addCookie(cookie);
 
         //在session域中添加用户
@@ -93,5 +96,20 @@ public class UserServiceImpl implements UserServiceDao {
     @Override
     public boolean forgetPassword(User user) {
         return false;
+    }
+
+
+    @Override
+    public boolean logon(HttpServletRequest request, HttpServletResponse response) {
+
+        //清除session中的user
+        request.getSession().removeAttribute("user");
+
+        //清除cookies中的 account
+        Cookie account = new Cookie("account", null);
+        account.setMaxAge(0);
+        response.addCookie(account);
+
+        return true;
     }
 }

@@ -14,8 +14,10 @@ public enum UserEnum implements IMessageEnum {
 
     //成功信息
     USER_ACCOUNT_REGISTER_SUCCESS(200, "用户注册成功,去登陆吧"),
+    USER_LOGON_SUCCESS(201, "退出登录成功"),
 
-    ;
+    //警告信息
+    USER_ALREAD_LOGIN(300, "用户已登陆");
 
     private Integer code;
 

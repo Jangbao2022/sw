@@ -7,9 +7,9 @@ import com.boob.sw.service.UserServiceDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,46 +32,40 @@ public class UserController {
      * @return
      */
     @PostMapping("login")
-    public String login(@RequestParam("account") Long account,
-                        @RequestParam("password") String password,
+    public String login(User user,
                         HttpServletRequest request,
                         HttpServletResponse response,
                         Model model) {
-        //封装传入数据
-        User preUser = new User();
-        preUser.setAccount(account);
-        preUser.setPassword(password);
+
         //检查用户合法性
-        User user = userServiceDao.checkUser(preUser);
+        User checkUser = userServiceDao.checkUser(user);
         //如果不存在
-        if (user == null) {
+        if (checkUser == null) {
             //添加错误信息
-            model.addAttribute("account", account);
-            model.addAttribute("password", password);
+            model.addAttribute("account", user.getAccount());
+            model.addAttribute("password", user.getPassword());
             model.addAttribute("errorMessage", UserEnum.USER_ACCOUNT_FALSE.getMessage());
             return "account/login";
         } else {
             //登录
-            userServiceDao.login(user, request, response);
+            userServiceDao.login(checkUser, request, response);
 
             //成功返回index
             return "redirect:/index";
         }
     }
 
+    /**
+     * 注册账号
+     *
+     * @param user
+     * @param model
+     * @return
+     */
     @PostMapping("register")
-    public String registry(@RequestParam("username") String username,
-                           @RequestParam("account") Long account,
-                           @RequestParam("email") String email,
-                           @RequestParam("password") String password,
+    public String registry(User user,
                            Model model
     ) {
-        //封装传入数据
-        User user = new User();
-        user.setAccount(account);
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setEmail(email);
 
         //注册检验
         User registerUser = userServiceDao.checkRegister(user);
@@ -95,13 +89,27 @@ public class UserController {
     }
 
     @PostMapping("forgetPassword")
-    public String forgetPassword(@RequestParam("email") String email,
+    public String forgetPassword(User user,
                                  Model model) {
 
-        User user = new User();
-        user.setEmail(email);
+
+        userServiceDao.forgetPassword(user);
+
         model.addAttribute("user", user);
         model.addAttribute("errorMessage", GlobalEnum.NOT_SUPPORT.getMessage());
         return "account/forgetPassword";
+    }
+
+    /**
+     * 退出登录
+     *
+     * @return
+     */
+    @GetMapping("logon")
+    public String logon(HttpServletRequest request, HttpServletResponse response, Model model) {
+
+        //检验是否已登录
+        boolean logon = userServiceDao.logon(request, response);
+        return "index";
     }
 }

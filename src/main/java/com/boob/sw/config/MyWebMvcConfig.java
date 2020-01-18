@@ -37,9 +37,10 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
         //配置viewController
         registry.addViewController("/main").setViewName("index");
         registry.addViewController("/index").setViewName("index");
-        registry.addViewController("/page/login").setViewName("account/login");
+//        registry.addViewController("/page/login").setViewName("account/login");
         registry.addViewController("/page/register").setViewName("account/register");
         registry.addViewController("/page/forgetPassword").setViewName("account/forgetPassword");
+        registry.addViewController("/page/personCenter").setViewName("profile/personCenter");
     }
 
     @Override
@@ -60,6 +61,7 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
 
         //登录注册操作
         excludePaths.add("/user/login");
+        excludePaths.add("/user/logon");
         excludePaths.add("/user/register");
         excludePaths.add("/user/forgetPassword");
 
@@ -67,6 +69,7 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
         excludePaths.add("/static/**");
         excludePaths.add("/images/**");
         excludePaths.add("/css/**");
+        excludePaths.add("/favicon.ico");
         excludePaths.add("/js/**");
 
         //配置登录拦截器

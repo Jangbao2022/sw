@@ -68,7 +68,7 @@
                 <img src="/images/icons/white/lock.png" alt="" title=""/><span>登录</span></a>
             </li>
 
-            <li><a href="/page/setting" class="close-panel"><img src="/images/icons/white/features.png" alt=""
+            <li><a href="/page/setting" class="close-panel"><img src="/images/icons/white/settings.png" alt=""
                                                                  title=""/><span>设置</span></a>
             </li>
 
@@ -87,43 +87,42 @@
 <div class="panel panel-right panel-reveal">
     <!--个人页面-->
     <div class="user_login_info">
-
         <div class="user_thumb">
             <div class="user_avatar"><img src="/images/avatar.jpg" alt="" title=""/></div>
             <div class="user_details">
-                <p>Welcome <span>Yan </span></p>
+                <p th:if="${session.user!=null}">欢迎 <span th:text="${session.user.username}"></span></p>
+                <p th:if="${session.user==null}">未登录</p>
+
             </div>
             <div class="user_social">
                 <ul>
-                    <li><a href="http://twitter.com/" class="external"><img src="/images/icons/white/twitter.png" alt=""
-                                                                            title=""/></a></li>
-                    <li><a href="http://www.facebook.com/" class="external"><img src="/images/icons/white/facebook.png"
-                                                                                 alt="" title=""/></a></li>
-                    <li><a href="http://plus.google.com/" class="external"><img src="/images/icons/white/gplus.png"
-                                                                                alt="" title=""/></a></li>
+                    <li><a href="http://www.qq.com/" class="external"><img src="/images/icons/white/qq.png"
+                                                                           alt="" title=""/></a></li>
+                    <li><a href="http://weixin.qq.com/" class="external"><img src="/images/icons/white/wechat.png"
+                                                                              alt="" title=""/></a></li>
+                    <li><a href="http://weibo.com/" class="external"><img src="/images/icons/white/weibo.png"
+                                                                          alt="" title=""/></a></li>
                 </ul>
             </div>
         </div>
 
         <nav class="user-nav">
             <ul>
-                <li><a href="features.html" class="close-panel"><img src="/images/icons/white/settings.png" alt=""
-                                                                     title=""/><span>Account Settings</span></a></li>
-                <li><a href="features.html" class="close-panel"><img src="/images/icons/white/briefcase.png" alt=""
-                                                                     title=""/><span>My Account</span></a></li>
-                <li><a href="features.html" class="close-panel"><img src="/images/icons/white/message.png" alt=""
-                                                                     title=""/><span>Messages</span><strong>12</strong></a>
+                <li><a href="/page/profile"><img src="/images/icons/white/briefcase.png" alt=""
+                                                 title=""/><span>个人资料</span></a></li>
+                <li><a href="/page/messages"><img src="/images/icons/white/message.png" alt=""
+                                                  title=""/><span>我的消息</span><strong>12</strong></a>
                 </li>
-                <li><a href="features.html" class="close-panel"><img src="/images/icons/white/love.png" alt=""
-                                                                     title=""/><span>Favorites</span><strong>5</strong></a>
+                <li><a href="/page/favorites"><img src="/images/icons/white/love.png" alt=""
+                                                   title=""/><span>我的收藏</span><strong>5</strong></a>
                 </li>
-                <li><a href="index.html" class="close-panel"><img src="/images/icons/white/lock.png" alt=""
-                                                                  title=""/><span>Logout</span></a></li>
+                <li><a href="/user/logon"><img src="/images/icons/white/lock.png" alt=""
+                                               title=""/><span>退出登录</span></a></li>
             </ul>
         </nav>
     </div>
-</div>
 
+</div>
 <div class="views">
 
     <div class="view view-main">
@@ -149,6 +148,11 @@
                                     <span class="subtitle" data-swiper-parallax="-60%">community</span>
                                     <p data-swiper-parallax="-30%">你可以在这里找到大神的教程与优秀的团队,
                                         也可以通过商店买到心仪的商品.</p>
+                                    <br>
+                                    <br>
+                                    <div>
+                                        <div th:insert="messages :: message"></div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="swiper-slide">

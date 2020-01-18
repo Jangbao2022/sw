@@ -41,10 +41,7 @@
             <p>没有账号?</p>
             <a href="/page/register" data-popup=".popup-signup" class="open-popup">注册</a>
         </div>
-        <div>
-            <p style="color:red; size:30px;" th:text="${errorMessage}"></p>
-            <p style="color:#208024; size:30px;" th:text="${successMessage}"></p>
-        </div>
+        <div th:insert="messages :: message"></div>
     </div>
     <div class="close_popup_button">
         <a href="/index" class="close-popup"><img src="/images/icons/black/menu_close.png" alt="" title=""/></a>
