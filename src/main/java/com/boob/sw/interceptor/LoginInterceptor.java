@@ -25,7 +25,7 @@ public class LoginInterceptor implements HandlerInterceptor {
                     return true;
             }
         }
-        request.setAttribute("message", UserEnum.USER_ACCOUNT_NOT_LOGIN.getMessage());
+        request.setAttribute("errorMessage", UserEnum.USER_ACCOUNT_NOT_LOGIN.getMessage());
         request.getRequestDispatcher("/page/login").forward(request, response);
         return false;
     }

@@ -59,7 +59,6 @@ public class UserController {
         }
     }
 
-
     @PostMapping("register")
     public String registry(@RequestParam("username") String username,
                            @RequestParam("account") Long account,
