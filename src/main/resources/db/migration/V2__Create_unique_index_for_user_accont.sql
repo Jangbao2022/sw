@@ -1,0 +1,1 @@
+create unique index user_account_uindex on user (account);

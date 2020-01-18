@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"></html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport"
@@ -24,22 +23,38 @@
 <!-- Register Popup -->
 <!--<div class="popup popup-signup">-->
 <div class="content-block">
-    <h4>注册</h4>
+    <h4 align="center">注册</h4>
     <div class="loginform">
         <form id="RegisterForm" method="post" action="/user/register">
-            <input type="text" name="Username" value="" class="form_input required" placeholder="账号"/>
-            <input type="text" name="Email" value="" class="form_input required" placeholder="邮箱"/>
-            <input type="password" name="Password" value="" class="form_input required" placeholder="密码"/>
+            <input type="test" name="username" th:value="${user!=null?user.username:null}" required="required"
+                   class="form_input required"
+                   placeholder="用户名"/>
+            <input type="number" name="account" th:value="${user!=null?user.account:null}" required="required"
+                   class="form_input required"
+                   placeholder="账号"/>
+            <input type="email" name="email" th:value="${user!=null?user.email:null}" required="required"
+                   class="form_input required"
+                   placeholder="邮箱"/>
+            <input type="password" name="password" th:value="${user!=null?user.password:null}" required="required"
+                   class="form_input required"
+                   placeholder="密码"/>
             <input type="submit" name="submit" class="form_submit" id="register_submit" value="注册"/>
         </form>
+
+        <div>
+            <p style="color:red; size:30px;" th:text="${errorMessage}"></p>
+            <p style="color:#208024; size:30px;" th:text="${successMessage}"></p>
+        </div>
+
         <h5>- 其他应用授权注册 -</h5>
         <div class="signup_social">
             <a href="http://www.qq.com/" class="signup_facebook external">qq</a>
             <a href="http://weixin.qq.com/" class="signup_twitter external">微信</a>
         </div>
+
     </div>
     <div class="close_popup_button">
-        <a href="#" class="close-popup"><img src="/images/icons/black/menu_close.png" alt="" title=""/></a>
+        <a href="/page/login" class="close-popup"><img src="/images/icons/black/menu_close.png" alt="" title=""/></a>
     </div>
 </div>
 <!--</div>-->

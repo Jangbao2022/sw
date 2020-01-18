@@ -16,43 +16,65 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <spring.boot.version>2.1.5.RELEASE</spring.boot.version>
+        <mysql.conn.java.version>5.1.46</mysql.conn.java.version>
+        <lombok.version>1.16.22</lombok.version>
+        <springloade.version>1.2.6.RELEASE</springloade.version>
+        <spring.boot.mybatis.version>2.1.0</spring.boot.mybatis.version>
+        <mybatis.generator.version>1.4.0</mybatis.generator.version>
+        <flyway.version>6.1.4</flyway.version>
+
+        <datasource.url>
+            jdbc:mysql://localhost:3306/sw?serverTimezone=UTC&amp;characterEncoding=utf8&amp;useUnicode=true&amp;useSSL=false
+        </datasource.url>
+        <datasource.username>root</datasource.username>
+        <datasource.password>pawn2589</datasource.password>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
+            <version>${spring.boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
+            <version>${spring.boot.version}</version>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.conn.java.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
+            <version>${spring.boot.version}</version>
             <optional>true</optional>
         </dependency>
+
+        <!--导入lombok-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
             <optional>true</optional>
         </dependency>
         <!--springboot引用外置tomcat-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
+            <version>${spring.boot.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -60,10 +82,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>springloaded</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
+            <version>${springloade.version}</version>
         </dependency>
 
 
@@ -71,17 +90,20 @@
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>2.1.0</version>
+            <version>${spring.boot.mybatis.version}</version>
         </dependency>
 
-        <!--引入thymleaf-->
+        <!--引入thymeleaf-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>${spring.boot.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring.boot.version}</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -98,45 +120,43 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
+                <!--springboot 热加载 fork :  如果没有该项配置，肯定devtools不会起作用，即应用不会restart -->
+                <configuration>
+                    <fork>true</fork>
+                </configuration>
             </plugin>
 
             <plugin>
                 <!--mybatis自动化-->
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.4.0</version>
+                <version>${mybatis.generator.version}</version>
                 <dependencies>
                     <dependency>
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
-                        <version>5.1.46</version>
+                        <version>${mysql.conn.java.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
 
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <!--springboot 热加载 fork :  如果没有该项配置，肯定devtools不会起作用，即应用不会restart -->
-                <configuration>
-                    <fork>true</fork>
-                </configuration>
-            </plugin>
+
             <plugin>
                 <!--flyway 管理数据库变更-->
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
-                <version>6.1.4</version>
+                <version>${flyway.version}</version>
                 <configuration>
-                    <url>jdbc:mysql://localhost:3306/sw?serverTimezone=UTC&amp;characterEncoding=utf8&amp;useUnicode=true</url>
-                    <user>root</user>
-                    <password>pawn2589</password>
+                    <url>${datasource.url}</url>
+                    <user>${datasource.username}</user>
+                    <password>${datasource.password}</password>
                 </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
-                        <version>5.1.46</version>
+                        <version>${mysql.conn.java.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>

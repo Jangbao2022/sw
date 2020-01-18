@@ -1,0 +1,1 @@
+alter table `user` change `name` username varchar (128);

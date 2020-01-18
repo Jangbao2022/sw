@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"></html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport"
@@ -28,15 +27,23 @@
     <h4 align="center">登录</h4>
     <div class="loginform">
         <form id="LoginForm" method="post" action="/user/login">
-            <input type="text" name="username" value="" class="form_input required" placeholder="账号"/>
-            <input type="password" name="password" value="" class="form_input required" placeholder="密码"/>
-            <div class="forgot_pass"><a href="#" data-popup=".popup-forgot" class="open-popup">忘记密码?</a>
+            <input type="number" name="account" th:value="${account}" class="form_input required" required="required"
+                   placeholder="账号"/>
+            <input type="password" name="password" th:value="${password}" class="form_input required"
+                   required="required"
+                   placeholder="密码"/>
+            <div class="forgot_pass"><a href="/page/forgetPassword" data-popup=".popup-forgot"
+                                        class="open-popup">忘记密码?</a>
             </div>
             <input type="submit" name="submit" class="form_submit" id="login_submit" value="登录"/>
         </form>
         <div class="signup_bottom">
             <p>没有账号?</p>
-            <a href="#" data-popup=".popup-signup" class="open-popup">注册</a>
+            <a href="/page/register" data-popup=".popup-signup" class="open-popup">注册</a>
+        </div>
+        <div>
+            <p style="color:red; size:30px;" th:text="${errorMessage}"></p>
+            <p style="color:#208024; size:30px;" th:text="${successMessage}"></p>
         </div>
     </div>
     <div class="close_popup_button">

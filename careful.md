@@ -1,0 +1,3 @@
+###mybaits generator查询错误
+数据库表中字段名为describe ...
+

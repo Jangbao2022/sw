@@ -1,0 +1,1 @@
+ALTER TABLE `user` MODIFY column avatar varchar(128)  COMMENT '头像';
