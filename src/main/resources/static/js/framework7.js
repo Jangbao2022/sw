@@ -7346,13 +7346,13 @@
 
                 // Check if link is external
                 if (isLink) {
-                        if (clicked.is(app.params.externalLinks) || (url && url.indexOf('javascript:') >= 0)) {
-                            if (url && clicked.attr('target') === '_system') {
-                                e.preventDefault();
-                                window.open(url, '_system');
-                            }
-                            return;
+                    if (clicked.is(app.params.externalLinks) || (url && url.indexOf('javascript:') >= 0)) {
+                        if (url && clicked.attr('target') === '_system') {
+                            e.preventDefault();
+                            window.open(url, '_system');
                         }
+                        return;
+                    }
                 }
 
                 // Collect Clicked data- attributes

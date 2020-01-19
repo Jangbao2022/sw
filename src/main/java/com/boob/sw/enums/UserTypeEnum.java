@@ -1,5 +1,8 @@
 package com.boob.sw.enums;
 
+/**
+ * 用户类型
+ */
 public enum UserTypeEnum {
     ORIGINAL(1, "普通用户"),
     SHOPPER(2, "商家"),

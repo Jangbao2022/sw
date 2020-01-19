@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+.blogs-footer {
+    width: 93%;
+    height: 30px;
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+    display: block;
+    margin: 20px 0;
+    padding: 10px 0;
+    text-align: center;
+    background-color: #fff;
+    color: #12d584;
+    font-size: 20px;
+    font-weight: 700;
+    border: 2px #12d584 solid;
+    cursor: pointer;
+    clear: both;
+    float: left;
+}
+
+.blogs-footer-full {
+    display: block;
+    width: 100%;
+    margin: 20px 0;
+    padding: 10px 0;
+    text-align: center;
+    background-color: #fff;
+    color: #12d584;
+    font-size: 20px;
+    font-weight: 700;
+    border: 2px #12d584 solid;
+    cursor: pointer;
+    clear: both;
+    float: left;
+}

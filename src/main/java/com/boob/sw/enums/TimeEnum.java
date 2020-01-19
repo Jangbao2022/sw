@@ -1,24 +1,24 @@
 package com.boob.sw.enums;
 
-import java.sql.Time;
-
+/**
+ * 时间枚举
+ * 方便管理
+ */
 public enum TimeEnum {
 
-    ONE_DAY(1, 60 * 60 * 24),
-    THREE_DAY(2, 60 * 60 * 24 * 3),
-    ONE_MONTH(3, 60 * 60 * 24 * 30),
+    COOKIE_LIFE("cookie生命长度", 60 * 60 * 24),
     ;
 
-    private Integer code;
+    private String describe;
     private Integer time;
 
-    TimeEnum(Integer code, Integer time) {
-        this.code = code;
+    TimeEnum(String describe, Integer time) {
+        this.describe = describe;
         this.time = time;
     }
 
-    public Integer getCode() {
-        return code;
+    public String getDescribe() {
+        return describe;
     }
 
     public Integer getTime() {

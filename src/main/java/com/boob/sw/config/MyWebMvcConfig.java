@@ -37,10 +37,11 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
         //配置viewController
         registry.addViewController("/main").setViewName("index");
         registry.addViewController("/index").setViewName("index");
+
 //        registry.addViewController("/page/login").setViewName("account/login");
         registry.addViewController("/page/register").setViewName("account/register");
         registry.addViewController("/page/forgetPassword").setViewName("account/forgetPassword");
-        registry.addViewController("/page/personCenter").setViewName("profile/personCenter");
+
     }
 
     @Override
@@ -73,9 +74,9 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
         excludePaths.add("/js/**");
 
         //配置登录拦截器
-        registry.addInterceptor(new LoginInterceptor())
-                .addPathPatterns("/**")
-                .excludePathPatterns(excludePaths);
+//        registry.addInterceptor(new LoginInterceptor())
+//                .addPathPatterns("/**")
+//                .excludePathPatterns(excludePaths);
 
     }
 

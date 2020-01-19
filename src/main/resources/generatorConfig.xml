@@ -5,6 +5,10 @@
 
 <generatorConfiguration>
     <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <!--导入分页插件-->
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
+
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/sw?serverTimezone=UTC&amp;characterEncoding=utf8&amp;useUnicode=true"
                         userId="root"
@@ -38,6 +42,7 @@
         <table tableName="superior" domainObjectName="Superior"></table>
         <table tableName="user" domainObjectName="User"></table>
         <table tableName="video_class" domainObjectName="VideoClass"></table>
+        <table tableName="blog" domainObjectName="Blog"></table>
 
     </context>
 </generatorConfiguration>

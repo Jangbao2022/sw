@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="//images/apple-touch-icon.png"/>
+    <link href="//images/apple-touch-startup-image-320x460.png" media="(device-width: 320px)"
+          rel="apple-touch-startup-image">
+    <link href="//images/apple-touch-startup-image-640x920.png"
+          media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+    <title>sw - Blogs</title>
+    <link rel="stylesheet" href="/css/framework7.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/my.css">
+    <link type="text/css" rel="stylesheet" href="/css/swipebox.css"/>
+    <link type="text/css" rel="stylesheet" href="/css/animations.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
+</head>
+<body id="mobile_wrap">
+<div class="pages">
+    <div data-page="blog" class="page no-toolbar no-navbar">
+        <div class="page-content">
+
+            <div th:insert="fragments::top"></div>
+
+            <div id="pages_maincontent">
+
+                <h2 class="page_title">精品文章</h2>
+                <div class="page_single layout_fullwidth_padding">
+                    <div th:insert="fragments::message"></div>
+                    <!--<div class="posts">-->
+                    <!--<div class="post_entry">-->
+                    <!--<div class="post_thumb">-->
+                    <!--<a href=""><img src="/images/photos/photo8.jpg" alt="" title=""/></a>-->
+                    <!--<div class="post_thumb_details">-->
+                    <!--<a href="#" class="open-popup" data-popup=".popup-social"><img-->
+                    <!--src="/images/icons/white/love.png" alt="" title=""/></a>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="post_details">-->
+                    <!--<div class="post_category"><a href="blog-single.html" class="bgred">DESIGN</a></div>-->
+                    <!--<h2><a href="blog-single.html">Design is not just what it looks like and feels like.</a>-->
+                    <!--</h2>-->
+                    <!--<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia ...</p>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="post_entry">-->
+
+                    <!--<div class="post_details">-->
+                    <!--<div class="post_category"><a href="blog-single.html" class="bgblue">NEWS</a></div>-->
+                    <!--<h2><a href="blog-single.html">Fashion fades, only style remains the same.</a></h2>-->
+                    <!--<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia ...</p>-->
+                    <!--</div>-->
+                    <!--<div class="post_thumb"><a href="blog-single.html"><img src="/images/photos/photo1.jpg"-->
+                    <!--alt="" title=""/></a>-->
+                    <!--<div class="post_thumb_details">-->
+                    <!--<a href="#" class="open-popup" data-popup=".popup-social"><img-->
+                    <!--src="/images/icons/white/pinterest.png" alt="" title=""/></a>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="post_entry">-->
+                    <!--<div class="post_thumb">-->
+                    <!--<a href="blog-single.html"><img src="/images/photos/photo15.jpg" alt="" title=""/></a>-->
+                    <!--<div class="post_thumb_details">-->
+                    <!--<a href="#" class="open-popup" data-popup=".popup-social"><img-->
+                    <!--src="/images/icons/white/instagram.png" alt="" title=""/></a>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="post_details">-->
+                    <!--<div class="post_category"><a href="blog-single.html" class="bgyellow">CODING</a></div>-->
+                    <!--<h2><a href="blog-single.html">Good design is making something memorable.</a></h2>-->
+                    <!--<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia ...</p>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="post_entry">-->
+
+                    <!--<div class="post_details">-->
+                    <!--<div class="post_category"><a href="blog-single.html" class="bgblue">NEWS</a></div>-->
+                    <!--<h2><a href="blog-single.html">Fashion fades, only style remains the same.</a></h2>-->
+                    <!--<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia ...</p>-->
+                    <!--</div>-->
+                    <!--<div class="post_thumb"><a href="blog-single.html"><img src="/images/photos/photo12.jpg"-->
+                    <!--alt="" title=""/></a>-->
+                    <!--<div class="post_thumb_details">-->
+                    <!--<a href="#" class="open-popup" data-popup=".popup-social"><img-->
+                    <!--src="/images/icons/white/pinterest.png" alt="" title=""/></a>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="post_entry">-->
+                    <!--<div class="post_thumb">-->
+                    <!--<a href="blog-single.html"><img src="/images/photos/photo14.jpg" alt="" title=""/></a>-->
+                    <!--<div class="post_thumb_details">-->
+                    <!--<a href="#" class="open-popup" data-popup=".popup-social"><img-->
+                    <!--src="/images/icons/white/instagram.png" alt="" title=""/></a>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="post_details">-->
+                    <!--<div class="post_category"><a href="blog-single.html" class="bgyellow">CODING</a></div>-->
+                    <!--<h2><a href="blog-single.html">Good design is making something memorable.</a></h2>-->
+                    <!--<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia ...</p>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="post_entry">-->
+
+                    <!--<div class="post_details">-->
+                    <!--<div class="post_category"><a href="blog-single.html" class="bgblue">NEWS</a></div>-->
+                    <!--<h2><a href="blog-single.html">Fashion fades, only style remains the same.</a></h2>-->
+                    <!--<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia ...</p>-->
+                    <!--</div>-->
+                    <!--<div class="post_thumb"><a href="blog-single.html"><img src="/images/photos/photo3.jpg"-->
+                    <!--alt="" title=""/></a>-->
+                    <!--<div class="post_thumb_details">-->
+                    <!--<a href="#" class="open-popup" data-popup=".popup-social"><img-->
+                    <!--src="/images/icons/white/pinterest.png" alt="" title=""/></a>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="post_entry">-->
+                    <!--<div class="post_thumb">-->
+                    <!--<a href="blog-single.html"><img src="/images/photos/photo13.jpg" alt="" title=""/></a>-->
+                    <!--<div class="post_thumb_details">-->
+                    <!--<a href="#" class="open-popup" data-popup=".popup-social"><img-->
+                    <!--src="/images/icons/white/instagram.png" alt="" title=""/></a>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="post_details">-->
+                    <!--<div class="post_category"><a href="blog-single.html" class="bgyellow">CODING</a></div>-->
+                    <!--<h2><a href="blog-single.html">Good design is making something memorable.</a></h2>-->
+                    <!--<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia ...</p>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="post_entry">-->
+
+                    <!--<div class="post_details">-->
+                    <!--<div class="post_category"><a href="blog-single.html" class="bgyellow">CODING</a></div>-->
+                    <!--<h2><a href="blog-single.html">Good design is making something memorable.</a></h2>-->
+                    <!--<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia ...</p>-->
+                    <!--</div>-->
+                    <!--<div class="post_thumb">-->
+                    <!--<a href="blog-single.html"><img src="/images/photos/photo4.jpg" alt="" title=""/></a>-->
+                    <!--<div class="post_thumb_details">-->
+                    <!--<a href="#" class="open-popup" data-popup=".popup-social"><img-->
+                    <!--src="/images/icons/white/instagram.png" alt="" title=""/></a>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+
+                    <div th:class="${blogsDto.elements.size()<4?'blogs-footer':'blogs-footer-full'}">
+                        <a th:href="${blogsDto.prePageUrl}"
+                           style="float: left">&nbsp;&nbsp;上一页</a>
+                        <a th:href="${blogsDto.prePageUrl}"
+                           style="float: right">下一页&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

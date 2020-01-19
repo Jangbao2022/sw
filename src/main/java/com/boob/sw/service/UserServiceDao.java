@@ -53,4 +53,13 @@ public interface UserServiceDao {
      */
     boolean logon(HttpServletRequest request, HttpServletResponse response);
 
+
+    /**
+     * 检查是否已登录
+     *
+     * @param request
+     * @return
+     */
+    boolean checkLogin(HttpServletRequest request, HttpServletResponse response);
+
 }

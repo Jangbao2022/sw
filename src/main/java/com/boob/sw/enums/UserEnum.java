@@ -1,5 +1,9 @@
 package com.boob.sw.enums;
 
+/**
+ * 用户操作提示信息
+ * 登录,注册...
+ */
 public enum UserEnum implements IMessageEnum {
 
     //错误信息

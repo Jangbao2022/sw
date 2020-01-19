@@ -1,4 +1,4 @@
-package com.boob.sw.service.impl;
+package com.boob.sw.service.userServiceImpl;
 
 import com.boob.sw.enums.TimeEnum;
 import com.boob.sw.enums.UserEnum;
@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserServiceDao {
 
         //将用户账号加入cookie
         Cookie cookie = new Cookie("account", user.getAccount().toString());
-        cookie.setMaxAge(TimeEnum.ONE_DAY.getTime());
+        cookie.setMaxAge(TimeEnum.COOKIE_LIFE.getTime());
         cookie.setPath("/");
         response.addCookie(cookie);
 
@@ -111,5 +111,29 @@ public class UserServiceImpl implements UserServiceDao {
         response.addCookie(account);
 
         return true;
+    }
+
+
+    @Override
+    public boolean checkLogin(HttpServletRequest request, HttpServletResponse response) {
+
+        boolean checkSession = false;
+        boolean checkCookie = false;
+
+        //检查session
+        User user = (User) request.getSession().getAttribute("user");
+        checkSession = (user != null);
+
+        //检查cookies
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            String name = cookie.getName();
+            if ("account".equals(name)) {
+                checkCookie = true;
+                break;
+            }
+        }
+        return checkCookie && checkSession;
+
     }
 }
