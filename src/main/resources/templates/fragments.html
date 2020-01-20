@@ -1,11 +1,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!--被引用的片段-->
 <body>
-<div th:fragment="message">
-    <p style="color:#ff2e19; size:30px;" th:text="${errorMessage}"></p>
-    <p style="color:#4fb330; size:30px;" th:text="${successMessage}"></p>
-    <p style="color:#ecef23; size:30px;" th:text="${warnMessage}"></p>
-</div>
 
 <div class="navbarpages" th:fragment="top">
     <div class="navbar_left">
@@ -18,5 +13,50 @@
     <!--<div class="navbar_right"><img src="/images/icons/black/my.png" alt="" title=""/></div>-->
     <!--</a>-->
 </div>
+
+<head th:fragment="headImport">
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png"/>
+    <link href="/images/apple-touch-startup-image-320x460.png" media="(device-width: 320px)"
+          rel="apple-touch-startup-image">
+    <link href="/images/apple-touch-startup-image-640x920.png"
+          media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+    <link rel="stylesheet" href="/css/framework7.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/my.css">
+    <link rel="stylesheet" href="/css/frozen.css"/>
+    <link type="text/css" rel="stylesheet" href="/css/swipebox.css"/>
+    <link type="text/css" rel="stylesheet" href="/css/animations.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
+    <script type="text/javascript" src="/js/my.js"></script>
+</head>
+
+
+<div id="haveMessage" th:if="${haveMessage}" class="ui-dialog show" th:fragment="message">
+    <div class="ui-dialog-cnt show">
+        <div class="ui-dialog-bd">
+            <p style="color:#ff0000; font-size: 18px" th:text="${errorMessage}"></p>
+            <p style="color: #0db30e; font-size: 18px" th:text="${successMessage}"></p>
+            <p style="color:rgba(0,0,0,0.64); font-size: 18px" th:text="${warnMessage}"></p>
+        </div>
+        <div class="ui-dialog-ft">
+            <button type="button" data-role="button" onclick="messageNotShow()">确定</button>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="isEmpty" th:if="${isEmpty!=null}">
+    <div class="ui-tooltips">
+        <div class="ui-tooltips-cnt ui-border-b">
+            [[${isEmpty}]]<br>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

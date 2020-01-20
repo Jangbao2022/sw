@@ -32,17 +32,69 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="comments" domainObjectName="Comments"></table>
-        <table tableName="course" domainObjectName="Course"></table>
-        <table tableName="goods" domainObjectName="Goods"></table>
+        <table tableName="comments" domainObjectName="Comments">
+            <!--以下为添加内容 -->
+            <columnOverride column="comment" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="after_comment" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="course" domainObjectName="Course">
+            <!--以下为添加内容 -->
+            <columnOverride column="description" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="show" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="goods" domainObjectName="Goods">
+            <!--以下为添加内容 -->
+            <columnOverride column="description" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="get" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="show" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="organization" domainObjectName="Organization">
+            <!--以下为添加内容 -->
+            <columnOverride column="show" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="description" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="shop_class" domainObjectName="ShopClass">
+            <!--以下为添加内容 -->
+            <columnOverride column="description" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="show" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="honor" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="shopper" domainObjectName="Shopper">
+            <!--以下为添加内容 -->
+            <columnOverride column="description" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="superior" domainObjectName="Superior">
+            <!--以下为添加内容 -->
+            <columnOverride column="description" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="honor" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="show" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="user" domainObjectName="User">
+            <!--以下为添加内容 -->
+            <columnOverride column="description" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="video_class" domainObjectName="VideoClass">
+            <!--以下为添加内容 -->
+            <columnOverride column="description" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="show" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="blog" domainObjectName="Blog">
+            <!--以下为添加内容 -->
+            <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="brief" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </table>
+
         <table tableName="organ_mid_super" domainObjectName="OrganMidSuper"></table>
-        <table tableName="organization" domainObjectName="Organization"></table>
-        <table tableName="shop_class" domainObjectName="ShopClass"></table>
-        <table tableName="shopper" domainObjectName="Shopper"></table>
-        <table tableName="superior" domainObjectName="Superior"></table>
-        <table tableName="user" domainObjectName="User"></table>
-        <table tableName="video_class" domainObjectName="VideoClass"></table>
-        <table tableName="blog" domainObjectName="Blog"></table>
+        <table tableName="organ_mid_user" domainObjectName="OrganMidUser"></table>
 
     </context>
 </generatorConfiguration>

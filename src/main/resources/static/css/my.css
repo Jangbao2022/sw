@@ -14,7 +14,7 @@
     color: #12d584;
     font-size: 20px;
     font-weight: 700;
-    border: 2px #12d584 solid;
+    /*border: 2px #12d584 solid;*/
     cursor: pointer;
     clear: both;
     float: left;
@@ -30,8 +30,18 @@
     color: #12d584;
     font-size: 20px;
     font-weight: 700;
-    border: 2px #12d584 solid;
+    /*border: 2px #12d584 solid;*/
     cursor: pointer;
     clear: both;
     float: left;
+}
+
+.backtoPages {
+    height: 25px;
+    width: 10%;
+    float: right;
+}
+
+.backtoImg{
+    height: 25px;
 }

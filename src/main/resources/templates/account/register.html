@@ -1,24 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png"/>
-    <link href="/images/apple-touch-startup-image-320x460.png" media="(device-width: 320px)"
-          rel="apple-touch-startup-image">
-    <link href="/images/apple-touch-startup-image-640x920.png"
-          media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-    <link rel="stylesheet" href="/css/framework7.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link type="text/css" rel="stylesheet" href="/css/swipebox.css"/>
-    <link type="text/css" rel="stylesheet" href="/css/animations.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
-    <meta charset="UTF-8">
-    <title>sw -Register</title>
-</head>
+<head th:insert="fragments::headImport"></head>
+<title>sw -Register</title>
 <body>
 <!-- Register Popup -->
 <!--<div class="popup popup-signup">-->
@@ -27,16 +10,16 @@
     <div class="loginform">
         <form id="RegisterForm" method="post" action="/user/register">
             <input type="test" name="username" th:value="${user!=null?user.username:null}" required="required"
-                   class="form_input required"
+                   class="form_input required" maxlength="20"
                    placeholder="用户名"/>
             <input type="number" name="account" th:value="${user!=null?user.account:null}" required="required"
-                   class="form_input required"
+                   class="form_input required" minlength="10" maxlength="20"
                    placeholder="账号"/>
             <input type="email" name="email" th:value="${user!=null?user.email:null}" required="required"
                    class="form_input required"
                    placeholder="邮箱"/>
             <input type="password" name="password" th:value="${user!=null?user.password:null}" required="required"
-                   class="form_input required"
+                   class="form_input required" minlength="8" maxlength="20"
                    placeholder="密码"/>
             <input type="submit" name="submit" class="form_submit" id="register_submit" value="注册"/>
         </form>

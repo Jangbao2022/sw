@@ -49,5 +49,11 @@ public class StreetWorkoutApplication extends SpringBootServletInitializer {
 
 ```
 
+###thymeleaf 日期类格式化
+```html
+
+    <span th:text="${#dates.format(user.date, 'yyyy-MM-dd')}">4564546</span>  
+```
+
 
 

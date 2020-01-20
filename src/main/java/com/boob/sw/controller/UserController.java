@@ -37,23 +37,32 @@ public class UserController {
                         HttpServletResponse response,
                         Model model) {
 
+        //是否存在提示信息
+        boolean haveMessage = false;
         //检查用户合法性
         User checkUser = userServiceDao.checkUser(user);
         //如果不存在
         if (checkUser == null) {
+            //提示信息置为存在
+            haveMessage = true;
             //添加错误信息
             model.addAttribute("account", user.getAccount());
             model.addAttribute("password", user.getPassword());
             model.addAttribute("errorMessage", UserEnum.USER_ACCOUNT_FALSE.getMessage());
+
+            model.addAttribute("haveMessage", haveMessage);
             return "account/login";
+
         } else {
             //登录
             userServiceDao.login(checkUser, request, response);
 
+            model.addAttribute("haveMessage", haveMessage);
             //成功返回index
             return "redirect:/index";
         }
     }
+
 
     /**
      * 注册账号
@@ -67,11 +76,16 @@ public class UserController {
                            Model model
     ) {
 
+        //是否存在提示信息
+        boolean haveMessage = false;
         //注册检验
         User registerUser = userServiceDao.checkRegister(user);
+        //提示信息置为存在
+        haveMessage = true;
 
         //检验成功
         if (registerUser != null) {
+
             //注册
             boolean b = userServiceDao.register(user);
             if (b) {
@@ -85,6 +99,7 @@ public class UserController {
             model.addAttribute("user", user);
             model.addAttribute("errorMessage", UserEnum.USER_ACCOUNT_EXIST.getMessage());
         }
+        model.addAttribute("haveMessage", haveMessage);
         return "account/register";
     }
 
@@ -92,11 +107,15 @@ public class UserController {
     public String forgetPassword(User user,
                                  Model model) {
 
-
+        //是否存在提示信息
+        boolean haveMessage = false;
         userServiceDao.forgetPassword(user);
-
         model.addAttribute("user", user);
+        //提示信息置为存在
+        haveMessage = true;
+
         model.addAttribute("errorMessage", GlobalEnum.NOT_SUPPORT.getMessage());
+        model.addAttribute("haveMessage", haveMessage);
         return "account/forgetPassword";
     }
 
@@ -109,7 +128,7 @@ public class UserController {
     public String logon(HttpServletRequest request, HttpServletResponse response, Model model) {
 
         //检验是否已登录
-        boolean logon = userServiceDao.logon(request, response);
+        userServiceDao.logon(request, response);
         return "index";
     }
 }

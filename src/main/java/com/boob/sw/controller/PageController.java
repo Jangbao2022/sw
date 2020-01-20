@@ -28,13 +28,22 @@ public class PageController {
     @GetMapping("login")
     public String login(HttpServletRequest request,
                         Model model) {
+
+
+        //是否存在提示信息
+        boolean haveMessage = false;
         //检查session域中有没有用户
         boolean b = userServiceDao.checkLogin(request, null);
         //如果已登录
         if (b) {
+            //提示信息置为存在
+            haveMessage = true;
             model.addAttribute("warnMessage", UserEnum.USER_ALREAD_LOGIN.getMessage());
+
+            model.addAttribute("haveMessage", haveMessage);
             return "index";
         }
+        model.addAttribute("haveMessage", haveMessage);
         return "account/login";
     }
 }
