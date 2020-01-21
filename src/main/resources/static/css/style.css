@@ -2306,6 +2306,7 @@ ul.comments {
 }
 
 ul.comments li {
+    width: 100%;
     list-style: none;
     float: left;
     clear: both;

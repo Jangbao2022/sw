@@ -1,0 +1,1 @@
+alter table blog_comment change content comment text not null comment '内容';

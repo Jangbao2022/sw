@@ -13,6 +13,8 @@ import java.util.List;
 
 @Component
 public class MyWebMvcConfig implements WebMvcConfigurer {
+
+
     /**
      * 添加静态资源文件，外部可以直接访问地址
      *
@@ -72,6 +74,7 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
         excludePaths.add("/css/**");
         excludePaths.add("/favicon.ico");
         excludePaths.add("/js/**");
+        excludePaths.add("/fonts/**");
 
         //配置登录拦截器
 //        registry.addInterceptor(new LoginInterceptor())

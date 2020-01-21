@@ -32,10 +32,15 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="comments" domainObjectName="Comments">
+        <table tableName="goods_comment" domainObjectName="GoodsComment">
             <!--以下为添加内容 -->
             <columnOverride column="comment" javaType="java.lang.String" jdbcType="VARCHAR"/>
             <columnOverride column="after_comment" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="blog_comment" domainObjectName="BlogComment">
+            <!--以下为添加内容 -->
+            <columnOverride column="comment" javaType="java.lang.String" jdbcType="VARCHAR"/>
         </table>
 
         <table tableName="course" domainObjectName="Course">
@@ -44,7 +49,7 @@
             <columnOverride column="show" javaType="java.lang.String" jdbcType="VARCHAR"/>
         </table>
 
-        <table tableName="goods" domainObjectName="Goods">
+        <table tableName="goods" domainObjectName="Good">
             <!--以下为添加内容 -->
             <columnOverride column="description" javaType="java.lang.String" jdbcType="VARCHAR"/>
             <columnOverride column="get" javaType="java.lang.String" jdbcType="VARCHAR"/>

@@ -2,17 +2,20 @@ package com.boob.sw.service.blogServiceImpl;
 
 import com.boob.sw.dto.BlogDto;
 import com.boob.sw.dto.PagesDto;
+import com.boob.sw.enums.CommentTypeEnum;
 import com.boob.sw.enums.PageUrlEnum;
+import com.boob.sw.mapper.BlogCommentMapper;
 import com.boob.sw.mapper.BlogMapper;
 import com.boob.sw.mapper.UserMapper;
-import com.boob.sw.model.Blog;
-import com.boob.sw.model.BlogExample;
-import com.boob.sw.model.User;
+import com.boob.sw.model.*;
+import com.boob.sw.model.exp.BlogCommentExp;
 import com.boob.sw.service.BlogServiceDao;
 import org.apache.ibatis.session.RowBounds;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -23,6 +26,9 @@ public class BlogServiceImpl implements BlogServiceDao {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private BlogCommentMapper blogCommentMapper;
 
     /**
      * 获取页面Dto
@@ -87,10 +93,31 @@ public class BlogServiceImpl implements BlogServiceDao {
         BlogDto blogDto = new BlogDto();
         Long checkedId = checkId(id);
         if (checkedId != null) {
+            //获取blog
             Blog blog = blogMapper.selectByPrimaryKey(checkedId);
+            //获取作者
             User author = userMapper.selectByPrimaryKey(blog.getuId());
+            //获取评论
+            BlogCommentExample example = new BlogCommentExample();
+            example.createCriteria()
+                    .andTypeEqualTo(CommentTypeEnum.COMMENT_MAJOR.getType())
+                    .andXIdEqualTo(blog.getId());
+            List<BlogComment> blogComments = blogCommentMapper.selectByExample(example);
+
+            //扩展将评论人加入
+            List<BlogCommentExp> blogCommentExps = new ArrayList<>();
+            for (BlogComment blogComment : blogComments) {
+                BlogCommentExp blogCommentExp = new BlogCommentExp();
+                BeanUtils.copyProperties(blogComment, blogCommentExp);
+                User commentUser = userMapper.selectByPrimaryKey(blogComment.getuId());
+                blogCommentExp.setCommentUser(commentUser);
+
+                blogCommentExps.add(blogCommentExp);
+            }
+
             blogDto.setBlog(blog);
             blogDto.setAuthor(author);
+            blogDto.setComments(blogCommentExps);
         }
         return blogDto;
     }

@@ -24,23 +24,6 @@
 
                 <h2 class="blog_title" th:text="${blogDto.blog.title}"></h2>
 
-                <!--&lt;!&ndash; Slider &ndash;&gt;-->
-                <!--<div class="swiper-container-pages swiper-init" data-effect="slide"-->
-                <!--data-pagination=".swiper-pagination">-->
-                <!--<div class="swiper-wrapper">-->
-
-                <!--<div class="swiper-slide">-->
-                <!--<img src="/images/page_photo.jpg" alt="" title=""/>-->
-                <!--</div>-->
-                <!--<div class="swiper-slide">-->
-                <!--<img src="/images/page_photo2.jpg" alt="" title=""/>-->
-                <!--</div>-->
-                <!--<div class="swiper-slide">-->
-                <!--<img src="/images/page_photo3.jpg" alt="" title=""/>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<div class="swiper-pagination"></div>-->
-                <!--</div>-->
                 <div class="page_single layout_fullwidth_padding">
                     <div class="post_single">
                         <div id="blog-view" style="width: 90%;">
@@ -68,11 +51,16 @@
 
                     <div class="tabs-animated-wrap">
                         <div class="tabs">
+                            <!--进行评论-->
                             <div id="tab1" class="tab active">
                                 <div class="contactform">
-                                    <form id="CommentForm" method="post" action="">
+                                    <form id="CommentForm" method="post" action="/comment/blogComment">
+                                        <!--上传blogId-->
+                                        <input type="text" name="xId" hidden="hidden" th:value="${blogDto.blog.id}">
+                                        <!--上传类型-->
+                                        <input type="number" name="type" hidden="hidden" value="1">
                                         <textarea name="comment" id="comment" class="form_textarea" rows="5"
-                                                  cols="" placeholder="请输入评论"></textarea>
+                                                  cols="" placeholder="请输入评论" required="required"></textarea>
                                         <input type="submit" name="submit" class="form_submit" id="submit"
                                                value="提交"/>
                                     </form>
@@ -80,12 +68,16 @@
                             </div>
 
                             <div id="tab2" class="tab">
+                                已有评论
                                 <ul class="comments">
-                                    <li class="comment_row">
+                                    <li class="comment_row" th:each="comment:${blogDto.comments}">
                                         <div class="comm_avatar">
                                             <img src="/images/icons/black/user.png" alt="" title="" border="0"/></div>
                                         <div class="comm_content">
-                                            <p>生日快乐<a href="#">John Doe</a></p></div>
+                                            <p th:text="${comment.comment}">生日快乐 </p>
+                                            <a href="#" th:text="${comment.commentUser.username}">John Doe</a>
+
+                                        </div>
                                     </li>
                                     <div class="clear"></div>
                                 </ul>

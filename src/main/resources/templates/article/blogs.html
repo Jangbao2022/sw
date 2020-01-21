@@ -21,8 +21,9 @@
                         <div class="post_entry" th:each="blog,blogStat : ${blogsDto.elements}">
                             <!--图片显示在左边-->
                             <div class="post_thumb" th:if="${blogStat.index%2==0}">
-                                <a th:href="@{/article/blog(blogId=${blog.id})}"><img th:src="${blog.cover}" alt=""
-                                                                                      title=""/></a>
+                                <a th:href="@{/article/blog(blogId=${blog.id})}">
+                                    <img src="/images/blog/sifangCover.jpg" alt="" title=""/>
+                                </a>
                                 <div class="post_thumb_details">
                                     <!--收藏图标-->
                                     <!--<a href="#" class="open-popup" data-popup=".popup-social"><img-->
@@ -33,16 +34,18 @@
                             <div class="post_details">
                                 <div class="post_category">
                                     <a th:href="@{/article/blog(blogId=${blog.id})}" class="bgred"
-                                       th:text="${blog.type}"></a></div>
+                                       th:text="${blog.type}"></a>
+                                </div>
                                 <h2>
                                     <a th:href="@{/article/blog(blogId=${blog.id})}" th:text="${blog.title}"></a>
                                 </h2>
                                 <p th:text="${blog.brief}"></p>
                             </div>
-
+                            <!--图片显示在右边-->
                             <div class="post_thumb" th:if="${blogStat.index%2==1}">
-                                <a th:href="@{/article/blog(blogId=${blog.id})}"><img th:src="${blog.cover}" alt=""
-                                                                                      title=""/></a>
+                                <a th:href="@{/article/blog(blogId=${blog.id})}">
+                                    <img src="/images/blog/sifangCover.jpg" alt="" title=""/>
+                                </a>
                                 <div class="post_thumb_details">
                                     <!--<a href="#" class="open-popup" data-popup=".popup-social"><img-->
                                     <!--src="/images/icons/white/love.png" alt="" title=""/></a>-->

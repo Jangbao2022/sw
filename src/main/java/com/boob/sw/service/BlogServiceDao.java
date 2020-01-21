@@ -16,5 +16,4 @@ public interface BlogServiceDao extends PageServiceDao {
      */
     @Override
     BlogDto getPage(String id);
-
 }
