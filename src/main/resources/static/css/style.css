@@ -791,7 +791,7 @@ ul.toolbar_icons li.menuicon img {
 }
 
 #pages_maincontent p {
-    padding: 0 0 15px 0;
+    padding: 10px 10px 10px 10px;
     margin: 0px;
     clear: both;
 }
@@ -2751,6 +2751,8 @@ ul.responsive_table li:first-child {
     }
 
     blockquote span {
+        padding-bottom: 10px;
+        padding-left: 10px;
         font-size: 15px;
         line-height: 22px;
     }

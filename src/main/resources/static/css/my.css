@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-.blogs-footer {
+.pages-footer {
     width: 93%;
     height: 30px;
     position: absolute;
@@ -20,7 +20,7 @@
     float: left;
 }
 
-.blogs-footer-full {
+.pages-footer-full {
     display: block;
     width: 100%;
     margin: 20px 0;
@@ -42,6 +42,16 @@
     float: right;
 }
 
-.backtoImg{
+.backtoImg {
     height: 25px;
+}
+
+.sendUs {
+    border: 3px solid #12d584;
+    margin-bottom: 10px;
+}
+
+.sendUs-button {
+    float: right;
+    margin-top: 7px;
 }

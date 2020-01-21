@@ -56,6 +56,8 @@
                                 <div class="contactform">
                                     <form id="CommentForm" method="post" action="/comment/blogComment">
                                         <!--上传blogId-->
+                                        <input type="text" name="blogId" hidden="hidden" th:value="${blogDto.blog.id}">
+                                        <!--上传xId-->
                                         <input type="text" name="xId" hidden="hidden" th:value="${blogDto.blog.id}">
                                         <!--上传类型-->
                                         <input type="number" name="type" hidden="hidden" value="1">

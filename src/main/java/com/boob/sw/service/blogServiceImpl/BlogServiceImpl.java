@@ -40,7 +40,7 @@ public class BlogServiceImpl implements BlogServiceDao {
     public PagesDto getPages(String page) {
 
         //创建pagesDto并注入url
-        PagesDto<Blog> pagesDto = new PagesDto<>(PageUrlEnum.ARTICLE_PAGE.getUrl());
+        PagesDto<Blog> pagesDto = new PagesDto<>(PageUrlEnum.ARTICLE_BLOGS_PAGE.getUrl());
         //转换成合法页码
         Integer checkedPage = checkPage(page);
 

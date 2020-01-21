@@ -98,6 +98,11 @@
             <columnOverride column="brief" javaType="java.lang.String" jdbcType="VARCHAR"/>
         </table>
 
+        <table tableName="send_us" domainObjectName="SendUs">
+            <!--以下为添加内容 -->
+            <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </table>
+
         <table tableName="organ_mid_super" domainObjectName="OrganMidSuper"></table>
         <table tableName="organ_mid_user" domainObjectName="OrganMidUser"></table>
 

@@ -1,5 +1,7 @@
 package com.boob.sw.controller;
 
+import com.boob.sw.enums.GlobalEnum;
+import com.boob.sw.enums.PageUrlEnum;
 import com.boob.sw.model.BlogComment;
 import com.boob.sw.model.User;
 import com.boob.sw.service.BlogCommentServiceDao;
@@ -25,16 +27,27 @@ public class CommentController {
     //处理blog下提交的评论
     @PostMapping("blogComment")
     public String blogComment(BlogComment blogComment,
+                              @RequestParam("blogId") Long blogId,
                               HttpServletRequest request,
                               Model model) {
 
+
+        //通过后台获取可以防止表单伪造
         User user = (User) request.getSession().getAttribute("user");
 
-        //上传评论
-        boolean b = blogCommentServiceDao.uploadComment(blogComment, user);
+        //获取检验结果
+        boolean flag = blogCommentServiceDao.checkComment(blogComment, user);
 
+        if (flag && blogCommentServiceDao.uploadComment(blogComment)) {
+            //评论成功
+            model.addAttribute("successMessage", GlobalEnum.COMMENT_SUCCESS.getMessage());
+        } else {
+            //评论失败
+            model.addAttribute("errorMessage", GlobalEnum.COMMENT_FAIL);
+        }
 
-        return null;
+        //重定向到文章
+        return "redirect:" + PageUrlEnum.ARTICLE_BLOG.getUrl() + blogId;
     }
 
 }

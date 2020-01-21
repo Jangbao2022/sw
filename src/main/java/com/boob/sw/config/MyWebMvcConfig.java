@@ -44,6 +44,10 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/page/register").setViewName("account/register");
         registry.addViewController("/page/forgetPassword").setViewName("account/forgetPassword");
 
+        registry.addViewController("/page/about").setViewName("us/about");
+        registry.addViewController("/page/contact").setViewName("us/contact");
+        registry.addViewController("/page/sendUs").setViewName("us/sendUs");
+
     }
 
     @Override

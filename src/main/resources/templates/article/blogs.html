@@ -54,7 +54,7 @@
 
                         </div>
                     </div>
-                    <div th:class="${blogsDto.elements.size()<=2?'blogs-footer':'blogs-footer-full'}">
+                    <div th:class="${blogsDto.elements.size()<=2?'pages-footer':'pages-footer-full'}">
                         <a th:href="${blogsDto.prePageUrl}" th:class="${blogsDto.prePageUrl=='#'?'disabled':''}"
                            style="float: left">&nbsp;&nbsp;上一页</a>
                         <a th:href="${blogsDto.aftPageUrl}" th:class="${blogsDto.aftPageUrl=='#'?'disabled':''}"

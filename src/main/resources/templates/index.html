@@ -56,8 +56,8 @@
                                                                  title=""/><span>设置</span></a>
             </li>
 
-            <li><a href="/page/about" class="close-panel"><img src="/images/icons/white/mobile.png" alt=""
-                                                               title=""/><span>关于我们</span></a>
+            <li><a href="/page/about" class="close-panel"><img src="images/icons/white/mobile.png" alt=""
+                                                               title=""/><span>关于我们</span></a></li>
             </li>
 
             <li><a href="/page/contact" class="close-panel"><img src="/images/icons/white/contact.png" alt=""
@@ -93,14 +93,16 @@
         <nav class="user-nav">
             <ul>
                 <li><a href="#"><img src="/images/icons/white/briefcase.png" alt=""
-                                                 title=""/><span>个人资料</span></a></li>
+                                     title=""/><span>个人资料</span></a></li>
 
                 <li><a href="#"><img src="/images/icons/white/message.png" alt=""
-                                                  title=""/><span>我的消息</span><strong>12</strong></a></li>
+                                     title=""/><span>我的消息</span><strong>12</strong></a></li>
 
                 <li><a href="#"><img src="/images/icons/white/love.png" alt=""
-                                                   title=""/><span>我的收藏</span><strong>5</strong></a>
+                                     title=""/><span>我的收藏</span><strong>5</strong></a>
                 </li>
+                <li><a href="/page/sendUs"><img src="/images/icons/white/form.png" alt=""
+                                                title=""/><span>反馈邮箱</span><strong>5</strong></a></li>
                 <li><a href="/user/logon"><img src="/images/icons/white/lock.png" alt=""
                                                title=""/><span>退出登录</span></a></li>
             </ul>
@@ -115,8 +117,8 @@
             <div data-page="index" class="page homepage">
                 <div class="page-content homepagecontent">
                     <div class="homenavbar">
-                        <h1><span>[[${#servletContext.getAttribute('teamPre')}]]</span>
-                            [[${#servletContext.getAttribute('teamAft')}]]</h1>
+                        <h1><span>[[${application.teamPre}]]</span>
+                            [[${application.teamAft}]]</h1>
                         <a href="#" data-panel="left" class="open-panel">
                             <div class="navbar_right"><img src="/images/icons/white/menu.png" alt="" title=""/></div>
                         </a>
@@ -154,22 +156,22 @@
                         </div>
                         <ul>
                             <li><a href="#"><img src="/images/icons/white/users.png" alt=""
-                                                           title=""/><span>团队</span></a></li>
+                                                 title=""/><span>团队</span></a></li>
 
                             <li><a href="/page/login"><img src="/images/icons/white/lock.png" alt=""
                                                            title=""/><span>登录</span></a></li>
 
                             <li><a href="#"><img src="/images/icons/white/user.png" alt=""
-                                                               title=""/><span>大神</span></a></li>
+                                                 title=""/><span>大神</span></a></li>
 
                             <li><a href="/article/blogs"><img src="/images/icons/white/article.png" alt=""
                                                               title=""/><span>精品文章</span></a>
                             </li>
                             <li><a href="#"><img src="/images/icons/white/photos.png" alt=""
-                                                            title=""/><span>壁纸</span></a>
+                                                 title=""/><span>壁纸</span></a>
                             </li>
                             <li><a href="#"><img src="/images/icons/white/video.png" alt=""
-                                                             title=""/><span>教程</span></a>
+                                                 title=""/><span>教程</span></a>
                             </li>
                             <li><a href="/page/shop"><img src="/images/icons/white/shop.png" alt=""
                                                           title=""/><span>商店</span></a></li>

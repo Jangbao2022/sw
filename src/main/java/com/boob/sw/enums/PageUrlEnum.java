@@ -5,8 +5,9 @@ package com.boob.sw.enums;
  */
 public enum PageUrlEnum {
 
-    ARTICLE_PAGE("文章页面分页", "/article/blogs?page="),
+    ARTICLE_BLOGS_PAGE("文章页面分页", "/article/blogs?page="),
 
+    ARTICLE_BLOG("文章页面", "/article/blog?blogId="),
 
     PAGE_STATIC("页面不变", "#"),
 

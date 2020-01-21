@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments::headImport"></head>
+<title>sw - Contact</title>
+<body id="mobile_wrap">
+<div class="pages">
+    <div data-page="contact" class="page no-toolbar no-navbar">
+        <div class="page-content">
+
+            <div th:insert="fragments::top"></div>
+
+            <div id="pages_maincontent">
+
+                <h2 class="page_title">联系我们</h2>
+
+                <div class="page_single layout_fullwidth_padding">
+
+                    <h2 id="Note"></h2>
+                    <div class="contactform">
+                        <form class="cmxform" id="ContactForm" method="post" action="">
+                            <label>名字:</label>
+                            <input type="text" name="name" id="name" th:value="${session.user.username}"
+                                   class="form_input required"/>
+                            <label>邮箱:</label>
+                            <input type="text" name="email" id="email" th:value="${session.user.email}"
+                                   class="form_input required email"/>
+                            <label>内容:</label>
+                            <textarea name="content" id="content" class="form_textarea textarea required"
+                                      rows="" cols=""></textarea>
+                            <input type="submit" name="submit" class="form_submit" id="submit" value="Send"/>
+                            <input class="" type="hidden" name="to" value="youremail@yourwebsite.com"/>
+                            <input class="" type="hidden" name="subject" value="Contacf form message"/>
+                            <label id="loader" style="display:none;"><img src="/images/loader.gif" alt="Loading..."
+                                                                          id="LoadingGraphic"/></label>
+                        </form>
+                    </div>
+                    <br>
+                    <h3>联系方式:</h3>
+
+                    <br>
+                    <blockquote>
+                        <p>
+                            地址: 成都市郫都区红光镇红光大道9999号<br/>
+                            邮箱: email@sifang.sw <br/>
+                            电话: +86 1234578910<br>
+                            微信: 小乔没有xiong
+                        </p>
+                    </blockquote>
+
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
