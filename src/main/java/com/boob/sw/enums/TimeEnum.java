@@ -7,7 +7,8 @@ package com.boob.sw.enums;
 public enum TimeEnum {
 
     COOKIE_LIFE("cookie生命长度", 60 * 60 * 24),
-    ;
+
+    ONE_DAY("一天的毫秒数", 1000 * 60 * 60 * 24);
 
     private String describe;
     private Integer time;

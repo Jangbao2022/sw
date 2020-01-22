@@ -40,13 +40,13 @@ public class BlogCommentServiceImpl implements BlogCommentServiceDao {
     @Override
     public boolean checkOneLevelComment(BlogComment blogComment) {
         Blog blog = blogMapper.selectByPrimaryKey(blogComment.getxId());
-        return blog == null;
+        return blog != null;
     }
 
     @Override
     public boolean checkTwoLevelComment(BlogComment blogComment) {
         BlogComment blogCommentFather = blogCommentMapper.selectByPrimaryKey(blogComment.getxId());
-        return blogCommentFather == null;
+        return blogCommentFather != null;
     }
 
     @Override

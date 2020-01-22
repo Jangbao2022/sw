@@ -19,7 +19,7 @@ public class PagesDto<E> {
     //当前页面要跳转的url前串
     private String PAGE_URL;
     //每一页四个blog
-    private final Integer CONTAINS = 4;
+    private Integer CONTAINS;
     //elements列表
     private List<E> elements;
     //总页数
@@ -74,7 +74,7 @@ public class PagesDto<E> {
             //如果当前页小于等于第一页
             this.page = 1;
             prePageUrl = PageUrlEnum.PAGE_STATIC.getUrl();
-            aftPageUrl = PAGE_URL + page;
+            aftPageUrl = PAGE_URL + (page + 1);
 
         } else if (page >= totalPage) {
             //如果当前页大于等于最后一页

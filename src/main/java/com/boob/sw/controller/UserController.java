@@ -1,6 +1,8 @@
 package com.boob.sw.controller;
 
+import com.boob.sw.dto.MessageDto;
 import com.boob.sw.enums.GlobalEnum;
+import com.boob.sw.enums.MessageType;
 import com.boob.sw.enums.UserEnum;
 import com.boob.sw.model.User;
 import com.boob.sw.service.UserServiceDao;
@@ -48,18 +50,20 @@ public class UserController {
             //添加错误信息
             model.addAttribute("account", user.getAccount());
             model.addAttribute("password", user.getPassword());
-            model.addAttribute("errorMessage", UserEnum.USER_ACCOUNT_FALSE.getMessage());
+            model.addAttribute(MessageType.ERROR_MESSAGE.getType(), UserEnum.USER_ACCOUNT_FALSE.getMessage());
 
-            model.addAttribute("haveMessage", haveMessage);
+            model.addAttribute(MessageType.HAVE_MESSAGE.getType(), haveMessage);
             return "account/login";
 
         } else {
-            //登录
-            userServiceDao.login(checkUser, request, response);
 
-            model.addAttribute("haveMessage", haveMessage);
+            //登录
+            MessageDto messageDto = userServiceDao.login(checkUser, request, response);
+
+            request.getSession().setAttribute("messageDto", messageDto);
+            model.addAttribute(MessageType.HAVE_MESSAGE.getType(), haveMessage);
             //成功返回index
-            return "redirect:/index";
+            return "index";
         }
     }
 
@@ -90,16 +94,16 @@ public class UserController {
             boolean b = userServiceDao.register(user);
             if (b) {
                 //注册成功
-                model.addAttribute("successMessage", UserEnum.USER_ACCOUNT_REGISTER_SUCCESS.getMessage());
+                model.addAttribute(MessageType.SUCCESS_MESSAGE.getType(), UserEnum.USER_ACCOUNT_REGISTER_SUCCESS.getMessage());
             } else {
                 //注册失败
-                model.addAttribute("errorMessage", UserEnum.USER_ACCOUNT_REGISTER_FAIL.getMessage());
+                model.addAttribute(MessageType.ERROR_MESSAGE.getType(), UserEnum.USER_ACCOUNT_REGISTER_FAIL.getMessage());
             }
         } else {
             model.addAttribute("user", user);
-            model.addAttribute("errorMessage", UserEnum.USER_ACCOUNT_EXIST.getMessage());
+            model.addAttribute(MessageType.ERROR_MESSAGE.getType(), UserEnum.USER_ACCOUNT_EXIST.getMessage());
         }
-        model.addAttribute("haveMessage", haveMessage);
+        model.addAttribute(MessageType.HAVE_MESSAGE.getType(), haveMessage);
         return "account/register";
     }
 
@@ -114,8 +118,8 @@ public class UserController {
         //提示信息置为存在
         haveMessage = true;
 
-        model.addAttribute("errorMessage", GlobalEnum.NOT_SUPPORT.getMessage());
-        model.addAttribute("haveMessage", haveMessage);
+        model.addAttribute(MessageType.ERROR_MESSAGE.getType(), GlobalEnum.NOT_SUPPORT.getMessage());
+        model.addAttribute(MessageType.HAVE_MESSAGE.getType(), haveMessage);
         return "account/forgetPassword";
     }
 

@@ -5,13 +5,12 @@ import com.boob.sw.enums.IMessageEnum;
 /**
  * 用户账户异常
  */
-public class UserAccountException extends RuntimeException {
-
+public class UserCustomizeException extends RuntimeException {
 
     private Integer code;
     private String message;
 
-    public UserAccountException(IMessageEnum iMessageEnum) {
+    public UserCustomizeException(IMessageEnum iMessageEnum) {
         this.code = iMessageEnum.getCode();
         this.message = iMessageEnum.getMessage();
     }

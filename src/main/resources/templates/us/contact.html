@@ -17,17 +17,22 @@
 
                     <h2 id="Note"></h2>
                     <div class="contactform">
-                        <form class="cmxform" id="ContactForm" method="post" action="">
+                        <form class="cmxform" id="ContactForm" method="post" action="/us/sendUs">
+                            <input type="text" name="uId" id="uId" th:value="${session.user.id}"
+                                   class="form_input required" hidden="hidden"/>
                             <label>名字:</label>
                             <input type="text" name="name" id="name" th:value="${session.user.username}"
                                    class="form_input required"/>
                             <label>邮箱:</label>
+                            <div>
+                                <div th:insert="fragments :: message"></div>
+                            </div>
                             <input type="text" name="email" id="email" th:value="${session.user.email}"
                                    class="form_input required email"/>
                             <label>内容:</label>
                             <textarea name="content" id="content" class="form_textarea textarea required"
                                       rows="" cols=""></textarea>
-                            <input type="submit" name="submit" class="form_submit" id="submit" value="Send"/>
+                            <input type="submit" name="submit" class="form_submit" id="submit" value="发送"/>
                             <input class="" type="hidden" name="to" value="youremail@yourwebsite.com"/>
                             <input class="" type="hidden" name="subject" value="Contacf form message"/>
                             <label id="loader" style="display:none;"><img src="/images/loader.gif" alt="Loading..."

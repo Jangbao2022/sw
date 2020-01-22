@@ -1,10 +1,13 @@
 package com.boob.sw.service.userServiceImpl;
 
+import com.boob.sw.dto.MessageDto;
 import com.boob.sw.enums.TimeEnum;
 import com.boob.sw.enums.UserEnum;
 import com.boob.sw.enums.UserTypeEnum;
-import com.boob.sw.exception.UserAccountException;
+import com.boob.sw.exception.UserCustomizeException;
+import com.boob.sw.mapper.SendUsMapper;
 import com.boob.sw.mapper.UserMapper;
+import com.boob.sw.model.SendUsExample;
 import com.boob.sw.model.User;
 import com.boob.sw.model.UserExample;
 import com.boob.sw.service.UserServiceDao;
@@ -24,6 +27,9 @@ public class UserServiceImpl implements UserServiceDao {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private SendUsMapper sendUsMapper;
+
     @Override
     public User checkUser(User user) {
 
@@ -41,14 +47,13 @@ public class UserServiceImpl implements UserServiceDao {
 
         } else if (users.size() > 1) {
             //用户数量大于一  服务端某个地方出错了
-            throw new UserAccountException(UserEnum.USER_ACCOUNT_REPEAT);
+            throw new UserCustomizeException(UserEnum.USER_ACCOUNT_REPEAT);
         }
         return users.get(0);
     }
 
     @Override
-    public boolean login(User user, HttpServletRequest request, HttpServletResponse response) {
-
+    public MessageDto login(User user, HttpServletRequest request, HttpServletResponse response) {
 
         //将用户账号加入cookie
         Cookie cookie = new Cookie("account", user.getAccount().toString());
@@ -59,7 +64,22 @@ public class UserServiceImpl implements UserServiceDao {
         //在session域中添加用户
         request.getSession().setAttribute("user", user);
 
-        return true;
+        //放置消息
+        MessageDto messageDto = putMessageCount(user.getId());
+        return messageDto;
+    }
+
+    @Override
+    public MessageDto putMessageCount(Long userId) {
+
+        MessageDto messageDto = new MessageDto();
+
+        SendUsExample example = new SendUsExample();
+        example.createCriteria().andUIdEqualTo(userId);
+
+        Long sendUsCount = sendUsMapper.countByExample(example);
+        messageDto.setSendUsCount(sendUsCount);
+        return messageDto;
     }
 
     @Override
@@ -73,7 +93,7 @@ public class UserServiceImpl implements UserServiceDao {
             return null;
         } else if (users.size() > 1) {
             //用户数量大于一  服务端某个地方出错了
-            throw new UserAccountException(UserEnum.USER_ACCOUNT_REPEAT);
+            throw new UserCustomizeException(UserEnum.USER_ACCOUNT_REPEAT);
         }
 
         //填入其他信息
@@ -87,6 +107,9 @@ public class UserServiceImpl implements UserServiceDao {
     @Override
     public boolean register(User user) {
         //向数据库插入用户
+        user.setGmtCreated(new Date());
+        user.setGmtModified(user.getGmtCreated());
+
         int insert = userMapper.insert(user);
 
         return insert == 1;

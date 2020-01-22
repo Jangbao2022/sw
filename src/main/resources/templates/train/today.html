@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments::headImport"></head>
+
+<link rel="stylesheet" href="/css/editormd.preview.css"/>
+<script type="text/javascript" src="/js/jquery-1.12.4.min.js"></script>
+<script src="/js/jquery-1.12.4.min.js"></script>
+<script src="/js/editormd.min.js"></script>
+<script src="/js/lib/marked.min.js"></script>
+<script src="/js/lib/prettify.min.js"></script>
+
+<title>sw - Today</title>
+<body id="mobile_wrap">
+<div class="pages">
+
+    <div data-page="toggle" class="page no-toolbar no-navbar">
+        <div class="page-content">
+
+            <div th:insert="fragments::top"></div>
+            <form action="/train/today" method="post">
+                <div id="pages_maincontent">
+
+                    <h2 class="page_title">今日计划</h2>
+
+                    <div class="page_single layout_fullwidth_padding">
+
+                        <div class="custom-accordion">
+                            <div id="p-1" class="accordion-item ">
+                                <div class="accordion-item-toggle">
+                                    <i class="icon icon-plus" onclick="expanded('p-p-1')">+</i>
+                                    <i class="icon icon-minus" onclick="expanded('p-m-1')">-</i>
+                                    <span>推力</span>
+                                </div>
+                                <div class="accordion-item-content">
+                                <textarea class="today-textarea" name="pushPlan" th:text="${today.pushPlan}">
+                                </textarea>
+                                </div>
+                            </div>
+                            <div id="p-2" class="accordion-item ">
+                                <div class="accordion-item-toggle">
+                                    <i class="icon icon-plus" onclick="expanded('p-p-2')">+</i>
+                                    <i class="icon icon-minus" onclick="expanded('p-m-2')">-</i>
+                                    <span>拉力</span>
+                                </div>
+                                <div class="accordion-item-content">
+                                <textarea class="today-textarea" name="pullPlan" th:text="${today.pullPlan}">
+                                </textarea>
+                                </div>
+                            </div>
+                            <div id="p-3" class="accordion-item ">
+                                <div class="accordion-item-toggle">
+                                    <i class="icon icon-plus" onclick="expanded('p-p-3')">+</i>
+                                    <i class="icon icon-minus" onclick="expanded('p-m-3')">-</i>
+                                    <span>腿</span>
+                                </div>
+                                <div class="accordion-item-content">
+                                <textarea class="today-textarea" name="legPlan" th:text="${today.legPlan}">
+                                </textarea>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div> <!--end of page single-->
+                    <div>
+                        <div th:insert="fragments :: message"></div>
+                    </div>
+
+                    <h2 class="page_title">完成情况</h2>
+
+                    <div class="page_single layout_fullwidth_padding">
+
+                        <div class="custom-accordion accordion-list">
+
+                            <input type="text" name="type" value="2" hidden="hidden">
+                            <div id="a-1" class="accordion-item">
+                                <div class="accordion-item-toggle">
+                                    <i class="icon icon-plus" onclick="expanded('a-p-1')">+</i>
+                                    <i class="icon icon-minus" onclick="expanded('a-m-1')">-</i>
+                                    <span>推力</span>
+                                </div>
+                                <div class="accordion-item-content">
+                                <textarea class="today-textarea" name="pushFinish" th:text="${today.pushFinish}">
+                                </textarea>
+                                </div>
+                            </div>
+                            <div id="a-2" class="accordion-item">
+                                <div class="accordion-item-toggle">
+                                    <i class="icon icon-plus" onclick="expanded('a-p-2')">+</i>
+                                    <i class="icon icon-minus" onclick="expanded('a-m-2')">-</i>
+                                    <span>拉力</span>
+                                </div>
+                                <div class="accordion-item-content">
+                                 <textarea class="today-textarea" name="pullFinish" th:text="${today.pullFinish}">
+                                </textarea>
+                                </div>
+                            </div>
+                            <div id="a-3" class="accordion-item">
+                                <div class="accordion-item-toggle">
+                                    <i class="icon icon-plus" onclick="expanded('a-p-3')">+</i>
+                                    <i class="icon icon-minus" onclick="expanded('a-m-3')">-</i>
+                                    <span>腿</span>
+                                </div>
+                                <div class="accordion-item-content">
+                                <textarea class="today-textarea" name="legFinish" th:text="${today.legFinish}">
+                                </textarea>
+                                </div>
+                            </div>
+                            <div class="ui-btn-wrap">
+                                <button class="ui-btn-s ui-btn-primary" type="submit">
+                                    确定
+                                </button>
+                            </div>
+
+                        </div>
+
+
+                    </div> <!--end of page single-->
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

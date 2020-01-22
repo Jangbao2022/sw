@@ -3,6 +3,7 @@ package com.boob.sw.service.blogServiceImpl;
 import com.boob.sw.dto.BlogDto;
 import com.boob.sw.dto.PagesDto;
 import com.boob.sw.enums.CommentTypeEnum;
+import com.boob.sw.enums.EveryPageElementCount;
 import com.boob.sw.enums.PageUrlEnum;
 import com.boob.sw.mapper.BlogCommentMapper;
 import com.boob.sw.mapper.BlogMapper;
@@ -41,6 +42,9 @@ public class BlogServiceImpl implements BlogServiceDao {
 
         //创建pagesDto并注入url
         PagesDto<Blog> pagesDto = new PagesDto<>(PageUrlEnum.ARTICLE_BLOGS_PAGE.getUrl());
+
+        //设置blogs页面包含数
+        pagesDto.setCONTAINS(EveryPageElementCount.BLOGS.getCount());
         //转换成合法页码
         Integer checkedPage = checkPage(page);
 
@@ -53,7 +57,7 @@ public class BlogServiceImpl implements BlogServiceDao {
         pagesDto.countPreAndAfter(checkedPage);
 
         //查询出所有blog 进行封装
-        List<Blog> blogs = blogMapper.selectByExampleWithRowbounds(example, new RowBounds(checkedPage - 1, 4));
+        List<Blog> blogs = blogMapper.selectByExampleWithRowbounds(example, new RowBounds(checkedPage - 1, EveryPageElementCount.BLOGS.getCount()));
         pagesDto.setElements(blogs);
 
         return pagesDto;

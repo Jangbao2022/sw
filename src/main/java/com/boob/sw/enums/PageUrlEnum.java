@@ -6,6 +6,7 @@ package com.boob.sw.enums;
 public enum PageUrlEnum {
 
     ARTICLE_BLOGS_PAGE("文章页面分页", "/article/blogs?page="),
+    US_SEND_US_PAGE("sendUs分页页面", "/us/sendUses?page="),
 
     ARTICLE_BLOG("文章页面", "/article/blog?blogId="),
 

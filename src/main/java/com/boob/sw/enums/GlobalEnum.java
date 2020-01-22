@@ -29,7 +29,9 @@ public enum GlobalEnum implements IMessageEnum {
 
     //权限不够
     POWER_NOT_ENOUGH(440, "你的权限不够"),
-    ;
+
+    //系统出错了
+    SYSTEM_GET_FALSE(500, "系统出错了");
 
 
     private Integer code;

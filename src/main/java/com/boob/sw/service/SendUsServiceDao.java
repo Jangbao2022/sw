@@ -1,5 +1,6 @@
 package com.boob.sw.service;
 
+import com.boob.sw.dto.PagesDto;
 import com.boob.sw.model.SendUs;
 import com.boob.sw.model.User;
 
@@ -21,9 +22,27 @@ public interface SendUsServiceDao {
     /**
      * 获取所有sendUs
      *
+     * @param page 页码
      * @return
      */
-    List<SendUs> getAllSendUs();
+    PagesDto getPages(String page);
+
+    /**
+     * 检查页码合法性
+     *
+     * @param page
+     * @return
+     */
+    Integer checkPage(String page);
+
+    /**
+     * 检验是不是user发的sendUs
+     *
+     * @param sendUs
+     * @param user
+     * @return
+     */
+    boolean checkSendUs(SendUs sendUs, User user);
 
     /**
      * 发送sendUs

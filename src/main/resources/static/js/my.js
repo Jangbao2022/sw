@@ -18,3 +18,16 @@ function activeTab(tab) {
     tab.setAttribute("class", 'tab-link button active');
 
 }
+
+/**
+ * 展开计划
+ * @param num 第几条
+ */
+function expanded(num) {
+    var element = document.getElementById(num.charAt(0) + '-' + num.charAt(4));
+    if (num.charAt(2) == ('p')) {
+        element.setAttribute('class', 'accordion-item accordion-item-expanded')
+    } else {
+        element.setAttribute('class', 'accordion-item')
+    }
+}

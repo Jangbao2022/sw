@@ -40,13 +40,11 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/main").setViewName("index");
         registry.addViewController("/index").setViewName("index");
 
-//        registry.addViewController("/page/login").setViewName("account/login");
         registry.addViewController("/page/register").setViewName("account/register");
         registry.addViewController("/page/forgetPassword").setViewName("account/forgetPassword");
 
         registry.addViewController("/page/about").setViewName("us/about");
         registry.addViewController("/page/contact").setViewName("us/contact");
-        registry.addViewController("/page/sendUs").setViewName("us/sendUs");
 
     }
 
@@ -81,9 +79,9 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
         excludePaths.add("/fonts/**");
 
         //配置登录拦截器
-//        registry.addInterceptor(new LoginInterceptor())
-//                .addPathPatterns("/**")
-//                .excludePathPatterns(excludePaths);
+        registry.addInterceptor(new LoginInterceptor())
+                .addPathPatterns("/**")
+                .excludePathPatterns(excludePaths);
 
     }
 

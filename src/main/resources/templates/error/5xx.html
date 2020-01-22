@@ -1,12 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>error</title>
-</head>
-<body>
-<h1>服务端出问题了</h1>
-<p>[[${exception}]]</p>
-<p>[[${url}]]</p>
+<!--主页-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments::headImport"></head>
+<title>sw - Index</title>
+<body id="mobile_wrap">
+
+<div class="statusbar-overlay"></div>
+
+<div class="panel-overlay"></div>
+
+<div class="views">
+
+    <div class="view view-main">
+        <div class="pages">
+            <div data-page="index" class="page homepage">
+                <div class="page-content homepagecontent">
+                    <div th:insert="fragments::top"></div>
+                    <div class="error-div">
+                        <h1 class="error-h1">服务器异常</h1><br>
+                        <img src="/images/error/500.jpg" class="error-img">
+                        <a href="/index" class="error-a">返回首页</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

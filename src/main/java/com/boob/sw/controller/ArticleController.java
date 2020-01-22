@@ -3,6 +3,7 @@ package com.boob.sw.controller;
 import com.boob.sw.dto.BlogDto;
 import com.boob.sw.dto.PagesDto;
 import com.boob.sw.enums.GlobalEnum;
+import com.boob.sw.enums.MessageType;
 import com.boob.sw.service.BlogServiceDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,7 +36,7 @@ public class ArticleController {
             model.addAttribute("isEmpty", GlobalEnum.IS_EMPTY.getMessage());
         }
 
-        model.addAttribute("haveMessage", haveMessage);
+        model.addAttribute(MessageType.HAVE_MESSAGE.getType(), haveMessage);
         //将数据加入页面
         model.addAttribute("blogsDto", blogsDto);
         return "article/blogs";
@@ -51,12 +52,12 @@ public class ArticleController {
         if (blogDto.getBlog() == null) {
             //提示信息置为存在
             haveMessage = true;
-            model.addAttribute("warnMessage", GlobalEnum.BLOG_IS_EMPTY.getMessage());
+            model.addAttribute(MessageType.WARN_MESSAGE.getType(), GlobalEnum.BLOG_IS_EMPTY.getMessage());
         } else {
             //将数据加入页面
             model.addAttribute("blogDto", blogDto);
         }
-        model.addAttribute("haveMessage", haveMessage);
+        model.addAttribute(MessageType.HAVE_MESSAGE.getType(), haveMessage);
         return "article/blog";
 
     }

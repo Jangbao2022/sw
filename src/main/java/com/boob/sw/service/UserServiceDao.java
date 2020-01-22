@@ -1,5 +1,6 @@
 package com.boob.sw.service;
 
+import com.boob.sw.dto.MessageDto;
 import com.boob.sw.model.User;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,9 +21,18 @@ public interface UserServiceDao {
      * 并设置权限
      *
      * @param user 账号
+     * @return 消息数量
      */
-    boolean login(User user, HttpServletRequest request, HttpServletResponse response);
+    MessageDto login(User user, HttpServletRequest request, HttpServletResponse response);
 
+
+    /**
+     * 放置消息数量
+     *
+     * @param userId
+     * @return 消息数量
+     */
+    MessageDto putMessageCount(Long userId);
 
     /**
      * 检验账户合法性

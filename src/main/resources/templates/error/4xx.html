@@ -1,13 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>error</title>
-</head>
-<body>
-<h1>客户端出问题了</h1>
+<!--404-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments::headImport"></head>
+<title>sw - 404</title>
+<body id="mobile_wrap">
 
-<p>[[${exception}]]</p>
-<p>[[${url}]]</p>
+<div class="statusbar-overlay"></div>
+
+<div class="panel-overlay"></div>
+
+<div class="views">
+
+    <div class="view view-main">
+        <div class="pages">
+            <div data-page="index" class="page homepage">
+                <div class="page-content homepagecontent">
+                    <div th:insert="fragments::top"></div>
+                    <div class="error-div">
+                        <h1 class="error-h1">该页面不在了</h1><br>
+                        <img src="/images/error/404.jpg" class="error-img">
+                        <a href="/index" class="error-a">返回首页</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

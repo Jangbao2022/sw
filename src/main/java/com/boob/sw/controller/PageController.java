@@ -1,6 +1,9 @@
 package com.boob.sw.controller;
 
+import com.boob.sw.dto.MessageDto;
+import com.boob.sw.enums.MessageType;
 import com.boob.sw.enums.UserEnum;
+import com.boob.sw.model.User;
 import com.boob.sw.service.UserServiceDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,12 +41,34 @@ public class PageController {
         if (b) {
             //提示信息置为存在
             haveMessage = true;
-            model.addAttribute("warnMessage", UserEnum.USER_ALREAD_LOGIN.getMessage());
+            model.addAttribute(MessageType.WARN_MESSAGE.getType(), UserEnum.USER_ALREAD_LOGIN.getMessage());
 
-            model.addAttribute("haveMessage", haveMessage);
+            model.addAttribute(MessageType.HAVE_MESSAGE.getType(), haveMessage);
             return "index";
         }
-        model.addAttribute("haveMessage", haveMessage);
+        model.addAttribute(MessageType.HAVE_MESSAGE.getType(), haveMessage);
         return "account/login";
     }
+
+    /**
+     * index页面
+     *
+     * @return
+     */
+    @GetMapping("index")
+    public String index(HttpServletRequest request) {
+
+        //获取用户
+        User user = (User) request.getSession().getAttribute("user");
+
+        //获取消息数
+        MessageDto messageDto = userServiceDao.putMessageCount(user.getId());
+
+        //重置消息数
+        request.getSession().setAttribute("messageDto", messageDto);
+
+        return "index";
+    }
+
+
 }

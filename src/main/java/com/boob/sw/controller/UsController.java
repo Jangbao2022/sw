@@ -1,6 +1,8 @@
 package com.boob.sw.controller;
 
+import com.boob.sw.dto.PagesDto;
 import com.boob.sw.enums.GlobalEnum;
+import com.boob.sw.enums.MessageType;
 import com.boob.sw.model.SendUs;
 import com.boob.sw.model.User;
 import com.boob.sw.service.SendUsServiceDao;
@@ -26,18 +28,25 @@ public class UsController {
 
     @PostMapping("sendUs")
     public String SendUs(SendUs sendUs,
+                         HttpServletRequest request,
                          Model model) {
-        boolean b = sendUsServiceDao.saveSendUs(sendUs);
-        if (b) {
-            model.addAttribute("successMessage", GlobalEnum.OPERATE_SUCCESS.getMessage());
+        User user = (User) request.getSession().getAttribute("user");
+
+        boolean b = sendUsServiceDao.checkSendUs(sendUs, user);
+
+        //添加message
+        model.addAttribute(MessageType.HAVE_MESSAGE.getType(), true);
+        if (b && sendUsServiceDao.saveSendUs(sendUs)) {
+            model.addAttribute(MessageType.SUCCESS_MESSAGE.getType(), GlobalEnum.OPERATE_SUCCESS.getMessage());
         } else {
-            model.addAttribute("errorMessage", GlobalEnum.OPERATE_FAIL.getMessage());
+            model.addAttribute(MessageType.ERROR_MESSAGE.getType(), GlobalEnum.OPERATE_FAIL.getMessage());
         }
         return "us/contact";
     }
 
     @GetMapping("sendUses")
     public String getSendUs(HttpServletRequest request,
+                            @RequestParam(value = "page", required = false) String page,
                             Model model) {
 
         User user = (User) request.getSession().getAttribute("user");
@@ -46,16 +55,18 @@ public class UsController {
 
         if (b) {
             //权限足够
-            List<SendUs> allSendUs = sendUsServiceDao.getAllSendUs();
-            model.addAttribute("allsendUs", allSendUs);
+            PagesDto sendUsDto = sendUsServiceDao.getPages(page);
+            model.addAttribute("sendUsDto", sendUsDto);
             return "us/sendUs";
         } else {
-            model.addAttribute("errorMessage", GlobalEnum.POWER_NOT_ENOUGH.getMessage());
+            //添加message
+            model.addAttribute(MessageType.HAVE_MESSAGE.getType(), true);
+            model.addAttribute(MessageType.ERROR_MESSAGE.getType(), GlobalEnum.POWER_NOT_ENOUGH.getMessage());
         }
         return "index";
     }
 
-    @DeleteMapping("sendUs")
+    @GetMapping("deleteSendUs")
     public String getSendUs(HttpServletRequest request,
                             @RequestParam("id") Long id,
                             Model model) {
@@ -63,18 +74,20 @@ public class UsController {
         //检验user权限
         boolean b = sendUsServiceDao.checkPower(user);
 
+        //添加message
+        model.addAttribute(MessageType.HAVE_MESSAGE.getType(), true);
         //权限足够
         if (b) {
             //删除操作
             boolean b1 = sendUsServiceDao.delSendUs(id);
             if (b1) {
-                model.addAttribute("successMessage", GlobalEnum.OPERATE_SUCCESS.getMessage());
+                model.addAttribute(MessageType.SUCCESS_MESSAGE.getType(), GlobalEnum.OPERATE_SUCCESS.getMessage());
             } else {
-                model.addAttribute("errorMessage", GlobalEnum.OPERATE_FAIL.getMessage());
+                model.addAttribute(MessageType.ERROR_MESSAGE.getType(), GlobalEnum.OPERATE_FAIL.getMessage());
             }
-            return "us/sendUs";
+            return "redirect:/us/sendUses";
         } else {
-            model.addAttribute("errorMessage", GlobalEnum.POWER_NOT_ENOUGH.getMessage());
+            model.addAttribute(MessageType.ERROR_MESSAGE.getType(), GlobalEnum.POWER_NOT_ENOUGH.getMessage());
         }
         return "index";
     }
