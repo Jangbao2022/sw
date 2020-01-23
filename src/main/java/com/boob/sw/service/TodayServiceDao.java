@@ -3,8 +3,6 @@ package com.boob.sw.service;
 
 import com.boob.sw.model.Today;
 
-import java.util.Date;
-
 public interface TodayServiceDao {
 
     /**

@@ -31,3 +31,29 @@ function expanded(num) {
         element.setAttribute('class', 'accordion-item')
     }
 }
+
+
+/**
+ * 展开target
+ */
+function showTarget(targetId) {
+    var flagArray = {
+        "0": [1, 2],
+        "1": [3, 4, 5]
+    }
+
+    var flag = (targetId > 2) * 1
+
+    for (i = 0; i < flagArray[flag].length; i++) {
+        var a = document.getElementById("a-tab" + flagArray[flag][i])
+        var div = document.getElementById("tab" + flagArray[flag][i])
+        if (flagArray[flag][i] == targetId) {
+            a.setAttribute("class", "tab-link active button")
+            div.setAttribute("class", "tab active")
+        } else {
+            a.setAttribute("class", "tab-link button")
+            div.setAttribute("class", "tab")
+        }
+    }
+
+}

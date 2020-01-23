@@ -2,8 +2,10 @@ package com.boob.sw.controller;
 
 import com.boob.sw.enums.GlobalEnum;
 import com.boob.sw.enums.MessageType;
+import com.boob.sw.model.Target;
 import com.boob.sw.model.Today;
 import com.boob.sw.model.User;
+import com.boob.sw.service.TargetServiceDao;
 import com.boob.sw.service.TodayServiceDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,9 @@ public class TrainController {
 
     @Autowired
     private TodayServiceDao todayServiceDao;
+
+    @Autowired
+    private TargetServiceDao targetServiceDao;
 
     @GetMapping("today")
     public String getToday(HttpServletRequest request,
@@ -54,7 +59,7 @@ public class TrainController {
             //失败
             model.addAttribute(MessageType.ERROR_MESSAGE.getType(), GlobalEnum.OPERATE_FAIL.getMessage());
         }
-        return "train/today";
+        return "redirect:/train/today";
 
     }
 
@@ -63,11 +68,33 @@ public class TrainController {
     public String getTarget(HttpServletRequest request,
                             Model model) {
 
-//        User user = (User) request.getSession().getAttribute("user");
-//        Today today = todayServiceDao.getTodayByUid(user.getId());
-//
-//        model.addAttribute("today", today);
+        User user = (User) request.getSession().getAttribute("user");
+        Target target = targetServiceDao.getTargetByUid(user.getId());
+
+        model.addAttribute("target", target);
         return "train/target";
     }
+
+    @PostMapping("target")
+    public String changeTarget(HttpServletRequest request,
+                               Target target,
+                               Model model) {
+
+        User user = (User) request.getSession().getAttribute("user");
+        target.setuId(user.getId());
+        boolean b = targetServiceDao.changeTarget(target);
+        //消息通知
+        model.addAttribute(MessageType.HAVE_MESSAGE.getType(), true);
+        if (b) {
+            //成功
+            model.addAttribute(MessageType.SUCCESS_MESSAGE.getType(), GlobalEnum.OPERATE_SUCCESS.getMessage());
+        } else {
+            //失败
+            model.addAttribute(MessageType.ERROR_MESSAGE.getType(), GlobalEnum.OPERATE_FAIL.getMessage());
+        }
+        return "redirect:/train/target";
+
+    }
+
 
 }

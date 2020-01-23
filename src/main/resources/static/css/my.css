@@ -94,3 +94,9 @@
     margin-top: 10px;
     margin-bottom: 5px;
 }
+
+.target-textarea {
+    width: 90%;
+    margin-left: 5%;
+    height: 180px;
+}

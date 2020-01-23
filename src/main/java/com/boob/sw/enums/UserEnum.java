@@ -16,6 +16,7 @@ public enum UserEnum implements IMessageEnum {
     //服务端出现的问题
     USER_ACCOUNT_REPEAT(1000, "用户账号存在重复"),
     USER_GOT_TWO_TODAY(1001, "用户拥有多个today训练"),
+    USER_GOT_TWO_TARGET(1002, "用户拥有多个target目标"),
 
     //成功信息
     USER_ACCOUNT_REGISTER_SUCCESS(200, "用户注册成功,去登陆吧"),

@@ -113,6 +113,15 @@
             <columnOverride column="leg_finish" javaType="java.lang.String" jdbcType="VARCHAR"/>
         </table>
 
+        <table tableName="target" domainObjectName="Target">
+            <!--以下为添加内容 -->
+            <columnOverride column="push_target" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="pull_target" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="short_period_one" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="short_period_two" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="short_period_three" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </table>
+
         <table tableName="organ_mid_super" domainObjectName="OrganMidSuper"></table>
         <table tableName="organ_mid_user" domainObjectName="OrganMidUser"></table>
 
