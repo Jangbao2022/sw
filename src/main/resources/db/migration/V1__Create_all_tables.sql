@@ -7,7 +7,7 @@ create table organization(
                            created_time datetime DEFAULT NULL COMMENT '成立时间',
                            member_num INT8 DEFAULT NULL COMMENT '成员人数',
                            icon VARCHAR(128) NOT NULL COMMENT '图标',
-                           honor VARnoCHAR(1024) NOT NULL COMMENT '荣誉',
+                           honor VARCHAR(1024) NOT NULL COMMENT '荣誉',
                            `show` VARCHAR(1024) NOT NULL COMMENT '展示图',
                            gmt_created datetime,
                            gmt_modified datetime
