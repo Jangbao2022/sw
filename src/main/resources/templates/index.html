@@ -99,7 +99,8 @@
                     <a href="#">
                         <img src="/images/icons/white/message.png" alt="" title=""/>
                         <span>我的消息</span>
-                        <strong th:if="${session.messageDto!=null}" th:text="${session.messageDto.messageCount}">12</strong>
+                        <strong th:if="${session.messageDto!=null}"
+                                th:text="${session.messageDto.messageCount}">12</strong>
                     </a>
                 </li>
 
@@ -107,13 +108,15 @@
                     <a href="#">
                         <img src="/images/icons/white/love.png" alt="" title=""/>
                         <span>我的收藏</span>
-                        <strong th:if="${session.messageDto!=null}" th:text="${session.messageDto.favoriteCount}">5</strong>
+                        <strong th:if="${session.messageDto!=null}"
+                                th:text="${session.messageDto.favoriteCount}">5</strong>
                     </a>
                 </li>
                 <li th:if="${session.user!=null&&session.user.category>=4}">
                     <a href="/us/sendUses"><img src="/images/icons/white/form.png" alt="" title=""/>
                         <span>反馈邮箱</span>
-                        <strong th:if="${session.messageDto!=null}" th:text="${session.messageDto.sendUsCount}">12</strong>
+                        <strong th:if="${session.messageDto!=null}"
+                                th:text="${session.messageDto.sendUsCount}">12</strong>
                     </a>
                 </li>
                 <li><a href="/user/logon"><img src="/images/icons/white/lock.png" alt=""
@@ -194,7 +197,9 @@
                             <li><a href="#"><img src="/images/icons/white/cart.png" alt=""
                                                  title=""/><span>购物车</span></a></li>
 
-                            <li><a href="#" data-popup=".popup-social" class="open-popup"><img
+                            <!--<li><a href="#" data-popup=".popup-social" class="open-popup"><img-->
+                            <!--src="/images/icons/white/twitter.png" alt="" title=""/><span>分享</span></a></li>-->
+                            <li><a href="#"><img
                                     src="/images/icons/white/twitter.png" alt="" title=""/><span>分享</span></a></li>
 
                             <li><a href="#" data-panel="right" class="open-panel"><img
