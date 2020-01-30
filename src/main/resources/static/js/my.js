@@ -57,3 +57,28 @@ function showTarget(targetId) {
     }
 
 }
+
+
+/**
+ * 商品购买加一
+ * @param id
+ */
+function shopAdd(id) {
+    var elementById = document.getElementById(id);
+    var value = parseInt(elementById.getAttribute("value"));
+    elementById.setAttribute("value", value + 1);
+
+}
+
+/**
+ * 商品购买减一
+ * @param id
+ */
+function shopMinus(id) {
+    var elementById = document.getElementById(id);
+    var value = parseInt(elementById.getAttribute("value"));
+    if (value > 1) {
+        elementById.setAttribute("value", value - 1);
+    }
+
+}

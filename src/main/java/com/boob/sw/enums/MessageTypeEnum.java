@@ -1,6 +1,6 @@
 package com.boob.sw.enums;
 
-public enum MessageType {
+public enum MessageTypeEnum {
 
     ERROR_MESSAGE(1, "errorMessage"),
     SUCCESS_MESSAGE(2, "successMessage"),
@@ -11,7 +11,7 @@ public enum MessageType {
     private Integer code;
     private String type;
 
-    MessageType(Integer code, String type) {
+    MessageTypeEnum(Integer code, String type) {
         this.code = code;
         this.type = type;
     }

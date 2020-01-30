@@ -1,7 +1,7 @@
 package com.boob.sw.controller;
 
 import com.boob.sw.dto.MessageDto;
-import com.boob.sw.enums.MessageType;
+import com.boob.sw.enums.MessageTypeEnum;
 import com.boob.sw.enums.UserEnum;
 import com.boob.sw.model.User;
 import com.boob.sw.service.UserServiceDao;
@@ -41,12 +41,12 @@ public class PageController {
         if (b) {
             //提示信息置为存在
             haveMessage = true;
-            model.addAttribute(MessageType.WARN_MESSAGE.getType(), UserEnum.USER_ALREAD_LOGIN.getMessage());
+            model.addAttribute(MessageTypeEnum.WARN_MESSAGE.getType(), UserEnum.USER_ALREAD_LOGIN.getMessage());
 
-            model.addAttribute(MessageType.HAVE_MESSAGE.getType(), haveMessage);
+            model.addAttribute(MessageTypeEnum.HAVE_MESSAGE.getType(), haveMessage);
             return "index";
         }
-        model.addAttribute(MessageType.HAVE_MESSAGE.getType(), haveMessage);
+        model.addAttribute(MessageTypeEnum.HAVE_MESSAGE.getType(), haveMessage);
         return "account/login";
     }
 

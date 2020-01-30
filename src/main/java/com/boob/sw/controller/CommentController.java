@@ -1,7 +1,7 @@
 package com.boob.sw.controller;
 
 import com.boob.sw.enums.GlobalEnum;
-import com.boob.sw.enums.MessageType;
+import com.boob.sw.enums.MessageTypeEnum;
 import com.boob.sw.enums.PageUrlEnum;
 import com.boob.sw.model.BlogComment;
 import com.boob.sw.model.User;
@@ -38,13 +38,12 @@ public class CommentController {
 
         //获取检验结果
         boolean flag = blogCommentServiceDao.checkComment(blogComment, user);
-
         if (flag && blogCommentServiceDao.uploadComment(blogComment)) {
             //评论成功
-            model.addAttribute(MessageType.SUCCESS_MESSAGE.getType(), GlobalEnum.COMMENT_SUCCESS.getMessage());
+            model.addAttribute(MessageTypeEnum.SUCCESS_MESSAGE.getType(), GlobalEnum.COMMENT_SUCCESS.getMessage());
         } else {
             //评论失败
-            model.addAttribute(MessageType.ERROR_MESSAGE.getType(), GlobalEnum.COMMENT_FAIL);
+            model.addAttribute(MessageTypeEnum.ERROR_MESSAGE.getType(), GlobalEnum.COMMENT_FAIL);
         }
 
         //重定向到文章

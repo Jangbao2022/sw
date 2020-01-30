@@ -46,26 +46,29 @@
         <table tableName="course" domainObjectName="Course">
             <!--以下为添加内容 -->
             <columnOverride column="description" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <columnOverride column="show" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="reveal" javaType="java.lang.String" jdbcType="VARCHAR"/>
         </table>
 
-        <table tableName="goods" domainObjectName="Good">
+        <table tableName="goods" domainObjectName="Goods">
             <!--以下为添加内容 -->
             <columnOverride column="description" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <columnOverride column="get" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <columnOverride column="show" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="receive" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="reveal" javaType="java.lang.String" jdbcType="VARCHAR"/>
         </table>
 
         <table tableName="organization" domainObjectName="Organization">
             <!--以下为添加内容 -->
-            <columnOverride column="show" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="reveal" javaType="java.lang.String" jdbcType="VARCHAR"/>
             <columnOverride column="description" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="cart" domainObjectName="Cart">
         </table>
 
         <table tableName="shop_class" domainObjectName="ShopClass">
             <!--以下为添加内容 -->
             <columnOverride column="description" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <columnOverride column="show" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="reveal" javaType="java.lang.String" jdbcType="VARCHAR"/>
             <columnOverride column="honor" javaType="java.lang.String" jdbcType="VARCHAR"/>
         </table>
 
@@ -78,7 +81,7 @@
             <!--以下为添加内容 -->
             <columnOverride column="description" javaType="java.lang.String" jdbcType="VARCHAR"/>
             <columnOverride column="honor" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <columnOverride column="show" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="reveal" javaType="java.lang.String" jdbcType="VARCHAR"/>
         </table>
 
         <table tableName="user" domainObjectName="User">
@@ -89,7 +92,7 @@
         <table tableName="video_class" domainObjectName="VideoClass">
             <!--以下为添加内容 -->
             <columnOverride column="description" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <columnOverride column="show" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="reveal" javaType="java.lang.String" jdbcType="VARCHAR"/>
         </table>
 
         <table tableName="blog" domainObjectName="Blog">

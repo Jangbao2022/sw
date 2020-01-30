@@ -18,8 +18,6 @@
                     <h2 id="Note"></h2>
                     <div class="contactform">
                         <form class="cmxform" id="ContactForm" method="post" action="/us/sendUs">
-                            <input type="text" name="uId" id="uId" th:value="${session.user.id}"
-                                   class="form_input required" hidden="hidden"/>
                             <label>名字:</label>
                             <input type="text" name="name" id="name" th:value="${session.user.username}"
                                    class="form_input required"/>

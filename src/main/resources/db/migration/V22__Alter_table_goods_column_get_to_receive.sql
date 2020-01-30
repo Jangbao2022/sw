@@ -1,0 +1,1 @@
+alter table goods change `get` receive text not null comment '如何购买';
