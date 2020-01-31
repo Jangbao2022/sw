@@ -25,6 +25,14 @@ public class UsController {
     @Autowired
     private SendUsServiceDao sendUsServiceDao;
 
+    /**
+     * 发送sendUs
+     *
+     * @param sendUs
+     * @param request
+     * @param model
+     * @return
+     */
     @PostMapping("sendUs")
     public String SendUs(SendUs sendUs,
                          HttpServletRequest request,
@@ -39,6 +47,14 @@ public class UsController {
         return "us/contact";
     }
 
+    /**
+     * 获取所有sendUs
+     *
+     * @param request
+     * @param page
+     * @param model
+     * @return
+     */
     @GetMapping("sendUses")
     public String getSendUs(HttpServletRequest request,
                             @RequestParam(value = "page", required = false) String page,
@@ -61,6 +77,14 @@ public class UsController {
         return "index";
     }
 
+    /**
+     * 删除sendUs
+     *
+     * @param request
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping("deleteSendUs")
     public String getSendUs(HttpServletRequest request,
                             @RequestParam("id") Long id,

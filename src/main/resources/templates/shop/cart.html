@@ -18,23 +18,25 @@
                         <div>
                             <div th:insert="fragments :: message"></div>
                         </div>
-                        <div class="cart_item" id="cartitem1" th:each="goodExp,goodStat :${cartDto.goodExps}">
+                        <div class="cart_item" id="cartitem1" th:each="goodsExp,goodStat :${cartDto.goodsExps}">
                             <div class="item_title"><span th:text="${goodStat.index+1+'.'}"></span>
-                                [[${goodExp.goods.name}]]
+                                [[${goodsExp.goods.name}]]
                             </div>
-                            <div th:id="${goodExp.goods.id}" class="item_price" th:text="'￥'+${goodExp.price}">$100
+                            <div th:id="${goodsExp.goods.id}" class="item_price" th:text="'￥'+${goodsExp.price}">$100
                             </div>
-                            <div class="item_thumb"><a href="shop/shop-item.html" class="close-panel"><img
-                                    th:src="'/images/photos/'+${goodExp.goods.reveal}+'.jpg'" alt="" title=""/></a>
+                            <div class="item_thumb"><a th:href="@{/shop/goods(id=${goodsExp.goods.id})}"
+                                                       class="close-panel"><img
+                                    th:src="'/images/photos/'+${goodsExp.goods.reveal}+'.jpg'" alt="" title=""/></a>
                             </div>
                             <div class="item_qnty">
                                 <form id="myform" method="POST" action="#" style="margin-top: 15%">
                                     <label>数量</label>
-                                    <input style="margin-left: 20%" type="text" name="quantity"
-                                           th:value="${goodExp.num}" class="qnty"/>
+                                    <input type="text" name="quantity" th:value="${goodsExp.num}"
+                                           class="qnty" hidden="hidden"/>
+                                    <p th:text="${goodsExp.num}" style="margin-left: 20%"></p>
                                 </form>
                             </div>
-                            <a th:href="@{deleteCart(cartId=${goodExp.cartId})}" class="item_delete"><img
+                            <a th:href="@{deleteCart(cartId=${goodsExp.cartId})}" class="item_delete"><img
                                     src="/images/icons/black/trash.png"
                                     alt="" title=""/></a></div>
 
@@ -52,12 +54,9 @@
                                 <div class="carttotal_right" th:text="${cartDto.newTotalPrice}">$ 1,518.00</div>
                             </div>
                         </div>
-
-                        <a href="#" class="button_full btyellow">暂不支持购买操作</a>
+                        <a href="#" class="button_full btyellow disabled">暂不支持购买操作</a>
 
                     </div>
-
-
                 </div>
 
             </div>

@@ -5,6 +5,9 @@ import lombok.Data;
 
 import java.util.Date;
 
+/**
+ * 博客评论扩展类
+ */
 @Data
 public class BlogCommentExp {
     private Long id;

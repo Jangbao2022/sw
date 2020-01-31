@@ -3,6 +3,7 @@ package com.boob.sw.service;
 import com.boob.sw.dto.CartDto;
 import com.boob.sw.dto.ShopDto;
 import com.boob.sw.model.Cart;
+import com.boob.sw.model.exp.GoodsExp;
 
 public interface ShopServiceDao {
 
@@ -39,4 +40,13 @@ public interface ShopServiceDao {
      * @return
      */
     boolean deleteCart(Long cartId);
+
+
+    /**
+     * 通过id获取Goods
+     *
+     * @param goodsId
+     * @return
+     */
+    GoodsExp getGoodsExp(Long goodsId);
 }

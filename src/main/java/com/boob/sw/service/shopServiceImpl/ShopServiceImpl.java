@@ -4,11 +4,9 @@ import com.boob.sw.dto.CartDto;
 import com.boob.sw.dto.ShopDto;
 import com.boob.sw.mapper.CartMapper;
 import com.boob.sw.mapper.GoodsMapper;
-import com.boob.sw.model.Cart;
-import com.boob.sw.model.CartExample;
-import com.boob.sw.model.Goods;
-import com.boob.sw.model.GoodsExample;
-import com.boob.sw.model.exp.GoodExp;
+import com.boob.sw.mapper.ShopClassMapper;
+import com.boob.sw.model.*;
+import com.boob.sw.model.exp.GoodsExp;
 import com.boob.sw.service.ShopServiceDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +23,9 @@ public class ShopServiceImpl implements ShopServiceDao {
 
     @Autowired
     private CartMapper cartMapper;
+
+    @Autowired
+    private ShopClassMapper shopClassMapper;
 
     @Override
     public ShopDto getAll(Integer page) {
@@ -68,43 +69,54 @@ public class ShopServiceImpl implements ShopServiceDao {
         List<Cart> carts = cartMapper.selectByExample(cartExample);
 
         CartDto cartDto = new CartDto();
-        List<GoodExp> goodExps = new ArrayList<>();
+        List<GoodsExp> goodsExps = new ArrayList<>();
         //初始化价格
         Double newTotalPrice = 0d;
         Double save = 0d;
         Double oldTotalPrice = 0d;
         for (Cart cart : carts) {
             //获取商品信息
-            GoodExp goodExp = new GoodExp();
+            GoodsExp goodsExp = new GoodsExp();
             Long gId = cart.getgId();
             Goods goods = goodsMapper.selectByPrimaryKey(gId);
 
             //设置多数量商品价格
-            goodExp.setGoods(goods);
+            goodsExp.setGoods(goods);
             Integer num = cart.getNum();
 
-            goodExp.setCartId(cart.getId());
-            goodExp.setNum(num);
-            goodExp.setPrice(goods.getNewPrice() * num);
-
+            goodsExp.setCartId(cart.getId());
+            goodsExp.setNum(num);
+            goodsExp.setPrice(goods.getNewPrice() * num);
+            ShopClass shopClass = shopClassMapper.selectByPrimaryKey(goods.getcId());
+            goodsExp.setShopClass(shopClass);
             //加入list
-            goodExps.add(goodExp);
+            goodsExps.add(goodsExp);
             //设置总价格
             newTotalPrice += goods.getNewPrice() * num;
             oldTotalPrice += goods.getOldPrice() * num;
             save += (goods.getOldPrice() - goods.getNewPrice()) * num;
 
         }
-        cartDto.setGoodExps(goodExps);
+        cartDto.setGoodsExps(goodsExps);
         cartDto.setNewTotalPrice(newTotalPrice);
         cartDto.setSave(save);
         cartDto.setOldTotalPrice(oldTotalPrice);
         return cartDto;
     }
 
-
     @Override
     public boolean deleteCart(Long cartId) {
         return cartMapper.deleteByPrimaryKey(cartId) == 1;
+    }
+
+    @Override
+    public GoodsExp getGoodsExp(Long goodsId) {
+        GoodsExp goodsExp = new GoodsExp();
+        Goods goods = goodsMapper.selectByPrimaryKey(goodsId);
+        ShopClass shopClass = shopClassMapper.selectByPrimaryKey(goods.getcId());
+        goodsExp.setGoods(goods);
+        goodsExp.setShopClass(shopClass);
+
+        return goodsExp;
     }
 }

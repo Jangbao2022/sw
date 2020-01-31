@@ -20,13 +20,13 @@
                         </div>
                         <li th:each="goods : ${shopDto.goodsList}">
                             <div class="shop_thumb">
-                                <a href="#">
+                                <a th:href="@{/shop/goods(id=${goods.id})}">
                                     <img th:src="'/images/photos/'+${goods.reveal}+'.jpg'" alt=""
                                          title=""/>
                                 </a>
                             </div>
                             <div class="shop_item_details">
-                                <h4><a href="#" th:text="${goods.name}">俄挺架</a></h4>
+                                <h4><a th:href="@{/shop/goods(id=${goods.id})}" th:text="${goods.name}">俄挺架</a></h4>
                                 <div class="shop_item_price" th:text="'￥'+${goods.newPrice}">￥140</div>
                                 <form action="/shop/addCart" method="post">
                                     <div class="item_qnty_shop">

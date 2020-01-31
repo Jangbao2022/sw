@@ -1,7 +1,5 @@
 package com.boob.sw.controller;
 
-import com.boob.sw.enums.GlobalEnum;
-import com.boob.sw.enums.MessageTypeEnum;
 import com.boob.sw.model.Target;
 import com.boob.sw.model.Today;
 import com.boob.sw.model.User;
@@ -31,6 +29,13 @@ public class TrainController {
     @Autowired
     private TargetServiceDao targetServiceDao;
 
+    /**
+     * 获取今日目标
+     *
+     * @param request
+     * @param model
+     * @return
+     */
     @GetMapping("today")
     public String getToday(HttpServletRequest request,
                            Model model) {
@@ -42,6 +47,14 @@ public class TrainController {
         return "train/today";
     }
 
+    /**
+     * 更新今日目标
+     *
+     * @param request
+     * @param today
+     * @param model
+     * @return
+     */
     @PostMapping("today")
     public String changeToday(HttpServletRequest request,
                               Today today,
@@ -57,6 +70,13 @@ public class TrainController {
     }
 
 
+    /**
+     * 获取目标
+     *
+     * @param request
+     * @param model
+     * @return
+     */
     @GetMapping("target")
     public String getTarget(HttpServletRequest request,
                             Model model) {
@@ -68,6 +88,14 @@ public class TrainController {
         return "train/target";
     }
 
+    /**
+     * 更新目标
+     *
+     * @param request
+     * @param target
+     * @param model
+     * @return
+     */
     @PostMapping("target")
     public String changeTarget(HttpServletRequest request,
                                Target target,

@@ -3,7 +3,9 @@ package com.boob.sw.controller;
 import com.boob.sw.dto.CartDto;
 import com.boob.sw.dto.ShopDto;
 import com.boob.sw.model.Cart;
+import com.boob.sw.model.Goods;
 import com.boob.sw.model.User;
+import com.boob.sw.model.exp.GoodsExp;
 import com.boob.sw.service.ShopServiceDao;
 import com.boob.sw.utils.MessageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +38,14 @@ public class ShopController {
         return "shop/goodsList";
     }
 
+    /**
+     * 添加进购物车
+     *
+     * @param cart
+     * @param request
+     * @param model
+     * @return
+     */
     @RequestMapping("addCart")
     public String addCart(Cart cart,
                           HttpServletRequest request,
@@ -52,6 +62,13 @@ public class ShopController {
     }
 
 
+    /**
+     * 查看购物车
+     *
+     * @param request
+     * @param model
+     * @return
+     */
     @RequestMapping("cart")
     public String cart(HttpServletRequest request, Model model) {
         User user = (User) request.getSession().getAttribute("user");
@@ -62,6 +79,13 @@ public class ShopController {
     }
 
 
+    /**
+     * 删除购物车商品
+     *
+     * @param cartId
+     * @param model
+     * @return
+     */
     @RequestMapping("deleteCart")
     public String deleteCart(@RequestParam("cartId") Long cartId, Model model) {
 
@@ -69,6 +93,21 @@ public class ShopController {
 
         MessageUtils.addMessage(b, model);
         return "forward:/shop/cart";
+    }
+
+    /**
+     * goods详情
+     *
+     * @param goodsId
+     * @param model
+     * @return
+     */
+    @RequestMapping("goods")
+    public String goods(@RequestParam("id") Long goodsId, Model model) {
+
+        GoodsExp goodsExp = shopServiceDao.getGoodsExp(goodsId);
+        model.addAttribute("goodsExp", goodsExp);
+        return "shop/goods";
     }
 
 }

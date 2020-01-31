@@ -23,6 +23,13 @@ public class ArticleController {
     private BlogServiceDao blogServiceDao;
 
 
+    /**
+     * 获取所有文章
+     *
+     * @param page
+     * @param model
+     * @return
+     */
     @GetMapping("blogs")
     public String getBlogs(@RequestParam(value = "page", required = false) String page,
                            Model model) {
@@ -42,6 +49,13 @@ public class ArticleController {
         return "article/blogs";
     }
 
+    /**
+     * 获取单篇文章细节
+     *
+     * @param blogId
+     * @param model
+     * @return
+     */
     @GetMapping("blog")
     public String getBlog(@RequestParam("blogId") String blogId,
                           Model model) {

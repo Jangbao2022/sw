@@ -1,6 +1,6 @@
 package com.boob.sw.dto;
 
-import com.boob.sw.model.exp.GoodExp;
+import com.boob.sw.model.exp.GoodsExp;
 import lombok.Data;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 public class CartDto {
 
-    private List<GoodExp> goodExps;
+    private List<GoodsExp> goodsExps;
     private Double oldTotalPrice;//总原价
     private Double save;//省钱
     private Double newTotalPrice;//折后价

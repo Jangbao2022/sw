@@ -25,7 +25,15 @@ public class CommentController {
     @Autowired
     private BlogCommentServiceDao blogCommentServiceDao;
 
-    //处理blog下提交的评论
+    /**
+     * 处理blog下提交的评论
+     *
+     * @param blogComment
+     * @param blogId
+     * @param request
+     * @param model
+     * @return
+     */
     @PostMapping("blogComment")
     public String blogComment(BlogComment blogComment,
                               @RequestParam("blogId") Long blogId,

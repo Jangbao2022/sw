@@ -107,12 +107,19 @@ public class UserController {
         return "account/register";
     }
 
+    /**
+     * 忘记密码
+     *
+     * @param user
+     * @param model
+     * @return
+     */
     @PostMapping("forgetPassword")
     public String forgetPassword(User user,
                                  Model model) {
 
         //是否存在提示信息
-        boolean haveMessage = false;
+        boolean haveMessage;
         userServiceDao.forgetPassword(user);
         model.addAttribute("user", user);
         //提示信息置为存在
