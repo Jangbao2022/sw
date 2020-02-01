@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments::headImport"></head>
+<title>sw - Music</title>
+<body id="mobile_wrap">
+<div class="pages">
+    <div data-page="photos" class="page no-toolbar no-navbar">
+        <div class="page-content">
+
+            <div th:insert="fragments::top"></div>
+
+            <div class="bottombarpages">
+                <div class="gallery_switch">
+                    <a href="#" id="view13" class="switcher active"><img src="/images/three_active.png"
+                                                                         onclick="photoSize(3)"></a>
+                    <a href="#" id="view12" class="switcher"><img src="/images/two.png" alt="Grid"
+                                                                  onclick="photoSize(2)"></a>
+                    <a href="#" id="view11" class="switcher"><img src="/images/one.png" alt="List"
+                                                                  onclick="photoSize(1)"></a>
+                </div>
+            </div>
+
+            <div id="pages_maincontent">
+
+                <h2 class="page_title">壁纸</h2>
+
+                <div class="page_single layout_fullwidth">
+                    <!--<div class="photo-categories">-->
+                    <!--<a href="#tab1p" class="tab-link active category-link">Lanscapes</a>-->
+                    <!--<a href="#tab2p" class="tab-link category-link">People</a>-->
+                    <!--<a href="#tab3p" class="tab-link category-link">Flowers</a>-->
+                    <!--</div>-->
+
+                    <div class="tabs-animated-wrap photos_tabs">
+                        <div class="tabs">
+                            <div id="tab1p" class="tab ">
+                                <ul id="photoslist" class="photo_gallery_13">
+                                    <li th:each="photo:${photoDto.elements}">
+                                        <a rel="gallery-3" th:href="'/images/photos/photo'+${photo.reveal}+'.jpg'"
+                                           title="Photo title"
+                                           class="swipebox">
+                                            <img th:src="'/images/photos/photo'+${photo.reveal}+'.jpg'" alt="image"/>
+                                        </a>
+                                    </li>
+                                    <div class="clearleft"></div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="clearleft"></div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

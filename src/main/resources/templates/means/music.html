@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments::headImport"></head>
+<title>sw - Music</title>
+<body id="mobile_wrap">
+<div class="pages">
+    <div data-page="music" class="page no-toolbar no-navbar">
+        <div class="page-content">
+
+            <div th:insert="fragments::top"></div>
+
+            <div id="pages_maincontent">
+
+                <h2 class="page_title">音乐</h2>
+
+                <div class="page_single layout_fullwidth_padding">
+
+                    <ul class="music_list">
+
+                        <li th:each="music,musicStat: ${musicDto.elements}">
+
+                            <div class="music-content">
+
+                                <p class="music-h4">[[${musicStat.index+1}+.]]<span th:text="${music.name}">Lights Down Low</span>
+                                </p>
+                                <span class="music-span" th:text="${music.author}">Max</span>
+                            </div>
+                            <a href="#" class="music-love"><img
+                                    src="/images/icons/black/love.png" alt="" title=""/></a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

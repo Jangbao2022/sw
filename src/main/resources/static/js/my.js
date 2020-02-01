@@ -82,3 +82,34 @@ function shopMinus(id) {
     }
 
 }
+
+
+/**
+ * 图片显示
+ * @param size
+ */
+function photoSize(size) {
+
+    var array = new Array(3)
+    array[0] = "one"
+    array[1] = "two"
+    array[2] = "three"
+
+    for (var i = 1; i <= 3; i++) {
+        var button = document.getElementById('view1' + i);
+        var img = button.childNodes[0];
+
+        var elementById = document.getElementById('photoslist');
+        elementById.setAttribute("class", "photo_gallery_1" + size)
+        if (size == i) {
+            button.setAttribute("class", 'switcher active')
+            img.setAttribute("src", '/images/' + array[i - 1] + '_active.png')
+        } else {
+            button.setAttribute("class", 'switcher')
+            img.setAttribute("src", '/images/' + array[i - 1] + '.png')
+
+        }
+    }
+
+
+}

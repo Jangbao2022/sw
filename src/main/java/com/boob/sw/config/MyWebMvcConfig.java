@@ -79,10 +79,10 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
         excludePaths.add("/js/**");
         excludePaths.add("/fonts/**");
 
-//        //配置登录拦截器
-//        registry.addInterceptor(new LoginInterceptor())
-//                .addPathPatterns("/**")
-//                .excludePathPatterns(excludePaths);
+        //配置登录拦截器
+        registry.addInterceptor(new LoginInterceptor())
+                .addPathPatterns("/**")
+                .excludePathPatterns(excludePaths);
 
     }
 
