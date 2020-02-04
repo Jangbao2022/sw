@@ -9,16 +9,16 @@
     <h4 align="center">注册</h4>
     <div class="loginform">
         <form id="RegisterForm" method="post" action="/user/register">
-            <input type="test" name="username" th:value="${user!=null?user.username:null}" required="required"
+            <input type="test" name="username" required="required"
                    class="form_input required" maxlength="20"
                    placeholder="用户名"/>
-            <input type="number" name="account" th:value="${user!=null?user.account:null}" required="required"
+            <input type="number" name="account" required="required"
                    class="form_input required" minlength="10" maxlength="20"
                    placeholder="账号"/>
-            <input type="email" name="email" th:value="${user!=null?user.email:null}" required="required"
+            <input type="email" name="email" required="required"
                    class="form_input required"
                    placeholder="邮箱"/>
-            <input type="password" name="password" th:value="${user!=null?user.password:null}" required="required"
+            <input type="password" name="password" required="required"
                    class="form_input required" minlength="8" maxlength="20"
                    placeholder="密码"/>
             <input type="submit" name="submit" class="form_submit" id="register_submit" value="注册"/>
@@ -30,8 +30,8 @@
 
         <h5>- 其他应用授权注册 -</h5>
         <div class="signup_social">
-            <a href="http://www.qq.com/" class="signup_facebook external">qq</a>
-            <a href="http://weixin.qq.com/" class="signup_twitter external">微信</a>
+            <a href="#" class="signup_facebook external">qq</a>
+            <a href="#" class="signup_twitter external">微信</a>
         </div>
 
     </div>
